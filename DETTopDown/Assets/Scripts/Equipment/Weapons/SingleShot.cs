@@ -8,17 +8,21 @@ public class SingleShot : Weapon
     [SerializeField] GameObject projectile;
     [SerializeField] float fireRate;
 
-    [SerializeField] float shotCd;
+    float shotCd;
     float nextShot = 0;
+    AimWeapon aimer;
+
 
     private void Start()
     {
         if (fireRate > 0) shotCd = 1 / fireRate;
         else shotCd = float.PositiveInfinity;
+        aimer = new AimWeapon();
     }
 
     private void Update()
     {
+
         if (Input.GetButtonDown("Fire1") && nextShot <= 0)
         {
             Trigger();
@@ -27,6 +31,11 @@ public class SingleShot : Weapon
         {
             nextShot -= Time.deltaTime;
         }
+    }
+
+    private void FixedUpdate()
+    {
+        aimer.Aim(transform);
     }
 
     public override void Trigger()
