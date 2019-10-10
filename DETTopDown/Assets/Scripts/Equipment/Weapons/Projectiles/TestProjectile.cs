@@ -18,20 +18,27 @@ public class TestProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        IDamageable target = collision.GetComponent<IDamageable>();
-        if (target != null)
+        if (collision.CompareTag("Enemy"))
         {
-            target.GetDamaged(20,DAMAGETYPE.NORMAL);
-            GameObject particleObject = target.GetDamageEffect();
-            particleObject.transform.position = this.transform.position;
+            IDamageable target = collision.GetComponent<IDamageable>();
+            if (target != null)
+            {
+                target.GetDamaged(20,DAMAGETYPE.NORMAL);
+                GameObject particleObject = target.GetDamageEffect();
+                particleObject.transform.position = this.transform.position;
 
-            particleObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(rb.velocity.y, rb.velocity.x) + 180));
+                Debug.Log("Projectile Velocity: " + rb.velocity);               
 
-            particleObject.GetComponent<ParticleSystem>().Play();
+                particleObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg + 180));
+
+                Debug.Log("Particle Rotation: " + particleObject.transform.rotation);
+
+                
+
+                particleObject.GetComponent<ParticleSystem>().Play();
+            }       
+            Destroy(this.gameObject);
         }
-
-        
-        Destroy(this.gameObject);
     }
 
 }
