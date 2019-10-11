@@ -448,6 +448,7 @@ GameObject:
   - component: {fileID: 724501248}
   - component: {fileID: 724501247}
   - component: {fileID: 724501250}
+  - component: {fileID: 724501251}
   m_Layer: 0
   m_Name: "Testdummy \"gutes St\xFCck\""
   m_TagString: Enemy
@@ -563,6 +564,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleObject: {fileID: 1017039718}
+--- !u!114 &724501251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724501246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8fd1a985aeca6247bc381f001c4b5e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ps: {fileID: 1017039721}
+  time: 2
+  next: 0
 --- !u!1 &1017039718
 GameObject:
   m_ObjectHideFlags: 0
