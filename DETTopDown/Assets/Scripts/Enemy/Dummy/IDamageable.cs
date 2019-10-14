@@ -5,7 +5,7 @@ using UnityEngine;
 public interface IDamageable
 {
     void GetDamaged(float dmg, DAMAGETYPE type);
-    GameObject GetDamageEffect();
+    PrefabPooler GetDamageEffect();
 
 }
 

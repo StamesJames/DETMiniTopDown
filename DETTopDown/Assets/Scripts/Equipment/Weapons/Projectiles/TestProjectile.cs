@@ -7,13 +7,24 @@ public class TestProjectile : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] float lifeTime;
+    [SerializeField] PrefabPooler projectilePool;
     Rigidbody2D rb;
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void OnEnable()
+    {
         rb.velocity = transform.right * speed;
-        Destroy(this.gameObject, lifeTime);
+        Invoke("PoolMe", lifeTime);       
+    }
+
+
+    private void PoolMe()
+    {
+        projectilePool.PoolObject(this.gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -24,21 +35,20 @@ public class TestProjectile : MonoBehaviour
             if (target != null)
             {
                 target.GetDamaged(20,DAMAGETYPE.NORMAL);
-                GameObject particleObject = target.GetDamageEffect();
-                particleObject.transform.position = this.transform.position;
+                PrefabPooler particleObject = target.GetDamageEffect();
+                GameObject newObject = particleObject.GetObject(transform);
 
-                Debug.Log("Projectile Velocity: " + rb.velocity);               
+                newObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg + 180));
 
-                particleObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg + 180));
-
-                Debug.Log("Particle Rotation: " + particleObject.transform.rotation);
-
-                
-
-                particleObject.GetComponent<ParticleSystem>().Play();
-            }       
-            Destroy(this.gameObject);
+                newObject.GetComponent<ParticleSystem>().Play();
+            }
+            projectilePool.PoolObject(this.gameObject);
         }
+    }
+
+    private void OnDisable()
+    {
+        CancelInvoke();
     }
 
 }

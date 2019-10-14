@@ -7,6 +7,7 @@ public class SingleShot : Weapon
     [SerializeField] Transform shotSpawn;
     [SerializeField] GameObject projectile;
     [SerializeField] float fireRate;
+    [SerializeField] PrefabPooler projectilePool;
 
     float shotCd;
     float nextShot = 0;
@@ -42,9 +43,9 @@ public class SingleShot : Weapon
     {
         if (shotSpawn && projectile)
         {
-            Instantiate(projectile, shotSpawn.position, shotSpawn.rotation);
+            projectilePool.GetObject(shotSpawn);
             nextShot = shotCd;
-        }
+        }       
     }
 
 }
