@@ -97,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   lifeTime: 10
+  projectilePool: {fileID: 11400000, guid: b034c2c4deb76e3468b9591df5d6f704, type: 2}
 --- !u!50 &5044794719715331050
 Rigidbody2D:
   serializedVersion: 4

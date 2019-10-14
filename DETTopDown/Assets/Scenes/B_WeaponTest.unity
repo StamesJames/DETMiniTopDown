@@ -352,6 +352,7 @@ MonoBehaviour:
   projectile: {fileID: 3485774231586064673, guid: 6121596e0bcc6f14885f52f8801c85a5,
     type: 3}
   fireRate: 10
+  projectilePool: {fileID: 11400000, guid: b034c2c4deb76e3468b9591df5d6f704, type: 2}
 --- !u!1 &651202623
 GameObject:
   m_ObjectHideFlags: 0
