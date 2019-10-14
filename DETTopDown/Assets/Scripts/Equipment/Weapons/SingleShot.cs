@@ -19,7 +19,6 @@ public class SingleShot : Weapon
         if (fireRate > 0) shotCd = 1 / fireRate;
         else shotCd = float.PositiveInfinity;
         aimer = new AimWeapon();
-        projectilePool = projectile.GetComponent<PrefabPooler>();
     }
 
     private void Update()

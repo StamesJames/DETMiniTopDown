@@ -15,7 +15,7 @@ public class PrefabPooler : ScriptableObject
         GameObject returnObject;
         if (objects.Count == 0)
         {
-            returnObject = Instantiate(pooledObject);
+            returnObject = Instantiate(pooledObject, targetTransform.position, targetTransform.rotation);
         }
         else
         {
@@ -33,7 +33,7 @@ public class PrefabPooler : ScriptableObject
         GameObject returnObject;
         if (objects.Count == 0)
         {
-            returnObject = Instantiate(pooledObject);
+            returnObject = Instantiate(pooledObject, targetTransform.position, targetTransform.rotation);
         }
         else
         {
