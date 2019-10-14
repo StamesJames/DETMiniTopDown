@@ -42,6 +42,9 @@ public class TestProjectile : MonoBehaviour
 
                 newObject.GetComponent<ParticleSystem>().Play();
             }
+        }
+        if (!collision.CompareTag("Player"))
+        {
             projectilePool.PoolObject(this.gameObject);
         }
     }
