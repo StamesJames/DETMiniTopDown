@@ -56,10 +56,8 @@ public class AreaProtector : MonoBehaviour
         if (!onTheWay)
         {
             targetHit = Physics2D.OverlapCircle(origin.position, protectionRadius, whatToAttack);
-            Debug.Log("Scaning for target");
             if (targetHit != null)
             {
-                Debug.Log("gefunden: " + targetHit.name);
                 onTheWay = true;
                 destSetter.target = targetHit.transform;
                 attackAI.SetTarget(targetHit.gameObject);

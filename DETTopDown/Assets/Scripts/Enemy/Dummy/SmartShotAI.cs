@@ -40,7 +40,7 @@ public class SmartShotAI : AttackAI
     {
         if (currentTarget)
         {
-            aimSpot = (Vector2) targetRB.transform.position + targetRB.velocity.normalized * ( (currentTarget.transform.position - transform.position).magnitude / projectileSpeed);
+            aimSpot = (Vector2) targetRB.transform.position + targetRB.velocity * ( (currentTarget.transform.position - transform.position).magnitude / projectileSpeed);
             Vector2 lookVec = aimSpot - (Vector2) transform.position;
             float lookAngle = Mathf.Atan2(lookVec.y, lookVec.x) * Mathf.Rad2Deg;
             weapon.rotation = Quaternion.Euler(new Vector3(0, 0, lookAngle));

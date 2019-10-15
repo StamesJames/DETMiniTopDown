@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     {      
         inputVec = Vector2.ClampMagnitude(inputVec, 1);
 
-        rb.MovePosition( inputVec * speed * Time.deltaTime + (Vector2) transform.position);
+        rb.velocity = (inputVec * speed);
         //normalized setzt vector auf länge 1 , verhindern von schrägen speed höher
         //Time.deltaTime ist die Zeit zwischen dem letzten FixedUpdate aufruf und jetzt 
     }
