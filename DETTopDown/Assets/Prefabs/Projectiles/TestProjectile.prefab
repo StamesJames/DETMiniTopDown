@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 150
   m_Sprite: {fileID: 21300000, guid: 249fce2ba7099dd408e6ddad76a21ac7, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   speed: 20
   lifeTime: 3
   projectilePool: {fileID: 11400000, guid: b034c2c4deb76e3468b9591df5d6f704, type: 2}
+  whatToHit: Enemy
 --- !u!50 &5044794719715331050
 Rigidbody2D:
   serializedVersion: 4

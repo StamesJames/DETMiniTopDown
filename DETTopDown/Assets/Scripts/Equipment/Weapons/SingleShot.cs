@@ -5,7 +5,6 @@ using UnityEngine;
 public class SingleShot : Weapon
 {
     [SerializeField] Transform shotSpawn;
-    [SerializeField] GameObject projectile;
     [SerializeField] float fireRate;
     [SerializeField] PrefabPooler projectilePool;
 
@@ -41,7 +40,8 @@ public class SingleShot : Weapon
 
     public override void Trigger()
     {
-        if (shotSpawn && projectile && !PauseMenu.Instance.IsPaused)
+        if (shotSpawn && projectilePool && !PauseMenu.Instance.IsPaused)
+
         {
             projectilePool.GetObject(shotSpawn);
             nextShot = shotCd;
