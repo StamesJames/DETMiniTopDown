@@ -28,6 +28,11 @@ public class PrefabPooler : ScriptableObject
         return returnObject;
     }
 
+    public GameObject GetPrefab()
+    {
+        return pooledObject;
+    }
+
     public GameObject GetObject(Transform targetTransform, Transform targetParent)
     {
         GameObject returnObject;

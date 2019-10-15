@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class TestProjectile : MonoBehaviour
+public class StraightSingleProjectile : Projectile
 {
-    [SerializeField] float speed;
-    [SerializeField] float lifeTime;
-    [SerializeField] PrefabPooler projectilePool;
+
     Rigidbody2D rb;
 
     void Awake()
@@ -36,12 +34,15 @@ public class TestProjectile : MonoBehaviour
             {
                 target.GetDamaged(20,DAMAGETYPE.NORMAL);
                 PrefabPooler particleObject = target.GetDamageEffect();
-                GameObject newObject = particleObject.GetObject(transform);
+                GameObject newObject = particleObject.GetObject(transform, collision.transform);
 
                 newObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg + 180));
 
                 newObject.GetComponent<ParticleSystem>().Play();
             }
+        }
+        if (!collision.CompareTag("Player"))
+        {
             projectilePool.PoolObject(this.gameObject);
         }
     }
