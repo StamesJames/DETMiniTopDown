@@ -11,6 +11,7 @@ public class AreaProtector : MonoBehaviour
     [SerializeField] float followRadius = 20f;
     [SerializeField] LayerMask whatToAttack;
 
+    AttackAI attackAI;
     Transform origin;
     Collider2D targetHit;
     Path path;
@@ -44,6 +45,7 @@ public class AreaProtector : MonoBehaviour
         GameObject emptyGameObject = new GameObject();
         seeker = GetComponent<Seeker>();
         destSetter = GetComponent<AIDestinationSetter>();
+        attackAI = GetComponent<AttackAI>();
         origin = Instantiate(emptyGameObject, transform.position, transform.rotation).transform;
         destSetter.target = origin;
     }
@@ -60,6 +62,7 @@ public class AreaProtector : MonoBehaviour
                 Debug.Log("gefunden: " + targetHit.name);
                 onTheWay = true;
                 destSetter.target = targetHit.transform;
+                attackAI.SetTarget(targetHit.gameObject);
             }
         }
         else if (targetHit)

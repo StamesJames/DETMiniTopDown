@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class TestProjectile : MonoBehaviour
+public class StraightSingleProjectile : Projectile
 {
-    [SerializeField] float speed;
-    [SerializeField] float lifeTime;
-    [SerializeField] PrefabPooler projectilePool;
+
     Rigidbody2D rb;
 
     void Awake()
