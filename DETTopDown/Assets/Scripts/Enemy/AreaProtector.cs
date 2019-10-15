@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
+
+[RequireComponent(typeof(Seeker), typeof(AIDestinationSetter), typeof(AIPath))]
 public class AreaProtector : MonoBehaviour
 {
     [SerializeField] float speed = 10f;
@@ -14,9 +16,6 @@ public class AreaProtector : MonoBehaviour
     AttackAI attackAI;
     Transform origin;
     Collider2D targetHit;
-    Path path;
-    int currentWaypoint = 0;
-    bool reachedEndOfPath = false;
 
     Seeker seeker;
     AIDestinationSetter destSetter;
@@ -68,7 +67,8 @@ public class AreaProtector : MonoBehaviour
             if ((origin.position - targetHit.transform.position).magnitude > followRadius)
             {
                 destSetter.target = origin.transform;
-                onTheWay = false;               
+                onTheWay = false;        
+                attackAI.SetTarget(null);       
             }
         }
 

@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Dummy : MonoBehaviour , IDamageable
+
+public class Enemy : MonoBehaviour, IDamageable
 {
     [SerializeField] PrefabPooler particlePool;
-    [SerializeField] float lifetotal;
     [SerializeField] float startHealth;
+    float lifetotal;
 
     [Header("Unity Stuff")]
-    public Image healthBar;
+    [SerializeField] Image healthBar;
 
     void Awake(){
+        lifetotal = startHealth;
         healthBar.fillAmount = lifetotal/startHealth;
     }
 

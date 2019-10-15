@@ -26,14 +26,15 @@ public class SmartShotAI : AttackAI
         {
             shotCD = float.PositiveInfinity;
         }
+        projectileSpeed = projectile.Speed;
+        projectile = projectilePool.GetPrefab().GetComponent<Projectile>();
     }
 
     public override void SetTarget(GameObject target)
     {
         currentTarget = target;
-        targetRB = target.GetComponent<Rigidbody2D>();
-        projectile = projectilePool.GetPrefab().GetComponent<Projectile>();
-        projectileSpeed = projectile.Speed;
+        if(target)
+            targetRB = target.GetComponent<Rigidbody2D>();
     }
 
     private void Update()

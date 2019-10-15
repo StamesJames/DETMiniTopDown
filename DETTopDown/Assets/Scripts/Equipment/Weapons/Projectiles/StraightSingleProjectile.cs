@@ -7,6 +7,7 @@ public class StraightSingleProjectile : Projectile
 {
 
     Rigidbody2D rb;
+    [SerializeField] string whatToHit;
 
     void Awake()
     {
@@ -27,7 +28,7 @@ public class StraightSingleProjectile : Projectile
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
+        if (collision.CompareTag(whatToHit))
         {
             IDamageable target = collision.GetComponent<IDamageable>();
             if (target != null)
@@ -41,7 +42,7 @@ public class StraightSingleProjectile : Projectile
                 newObject.GetComponent<ParticleSystem>().Play();
             }
         }
-        if (!collision.CompareTag("Player"))
+        if (!collision.CompareTag(this.tag) || collision.CompareTag("Untagged"))
         {
             projectilePool.PoolObject(this.gameObject);
         }
