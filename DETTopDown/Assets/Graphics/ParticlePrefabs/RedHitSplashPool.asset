@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 776290c647aee90458699352c6d79ccf, type: 3}
+  m_Name: RedHitSplashPool
+  m_EditorClassIdentifier: 
+  pooledObject: {fileID: 5988638494211550684, guid: dd1037a9f23710b46a87e4b91298e127,
+    type: 3}
