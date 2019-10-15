@@ -41,7 +41,6 @@ public class SingleShot : Weapon
     public override void Trigger()
     {
         if (shotSpawn && projectilePool && !PauseMenu.Instance.IsPaused)
-
         {
             projectilePool.GetObject(shotSpawn);
             nextShot = shotCd;
