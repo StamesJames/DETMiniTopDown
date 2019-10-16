@@ -25,14 +25,10 @@ public class GraplingHook : Gadget
         aimer = new AimWeapon();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         chainRenderer.SetPosition(0, transform.position);    
         chainRenderer.SetPosition(1, hook.transform.position);
-    }
-
-    private void Update()
-    {
         if (Input.GetButtonDown("Fire2") && !isShooting)
         {
             Trigger();
@@ -42,7 +38,25 @@ public class GraplingHook : Gadget
             StopShooting();
         }
 
+        if (isPulling)
+        {
+            playerMovement.InputActive = false;
+            playerMovement.MovePlayer((hook.transform.position - transform.position).normalized, pullSpeed);
+            if ((hook.transform.position - transform.position).magnitude <= 0.5f)
+            {
+                StopPulling();
+            }
+        }
         aimer.Aim(aimTransform);
+    }
+
+    void StopPulling()
+    {
+        hook.SetActive(false);
+        chain.SetActive(false);
+        playerMovement.InputActive = true;
+        isPulling = false;
+        StopShooting();
     }
 
     void StopShooting()
@@ -66,6 +80,8 @@ public class GraplingHook : Gadget
 
     public void HookHit()
     {
-        Debug.Log("HookHit");
+        Debug.Log("Hook Hit");
+        isShooting = false;
+        isPulling = true;
     }
 }
