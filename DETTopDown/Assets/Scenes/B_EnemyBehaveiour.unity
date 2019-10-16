@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 53635609}
   - component: {fileID: 53635608}
   - component: {fileID: 53635607}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hook
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -295,7 +295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAAAIIezuGboCcgIAABgFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1z2jAQ/SuMzoWxASe4txYI6SEfE9rJxRdhrbEGWfJIcoBk+O9dyTJ2KRfktx967+3aX4RLU0Nuld5ozp4UA/J9RNyZfBv1wUc40b2SW/4JXc47Z7Z0SdTnvFHLFeKxKzOqAqt5/kPuhUuOEGwkL5Su1mwPS2WsQbigwgCGtLKuWiL0NSIn/BunruSMp+m9O33iKY1GFzzmIC3oQWocT+6TKIpmi1AyjieR/80XoXR8N5kmi3k6W4+je9+lkbmgVQ3MSeqbLdLQI46iSeIzJeoNSQg5AkoIbgJdYs+1t2Nbl6DB+cE4RfWeYjyZIVAC35fWaRlWvxSFARvM0fS84hptbNuSn6r1tqLm0LL7oKJxF02TO0+rbfr0X3wc+3ChVfXY3YtiELIlzw9v9JxTYwfmD+HVgLo36UjFge4EvJcgn9VGq0YyDFrduNLGwHTVP16lLUvIDz3eUr0Bm7p3vZt1N2mn4eLVn5aCVztv/bwFtkJ5w/2CgMbh/ELCfn1MaIGoY/HHwG+6H+5ZCDxwbSyGgkrp6O1Uo10qWXvPnJrGLpWW4OFAugZJhT2/Yht7O8Kb2ODam8gDdW9UuDzEuhflpsTDfX4U3YRe1fE6LFOq4xOY8qWxgkvoSbvAM/q0VFK2Gzb0pCvbNrqg+aBs33D272oROo/TZMdiOruL4kWyGKfpNJ7lySzBrdzN5zvid49L1EnFa0s02INTk31ziXvWfWhGG01rv+1M0+OGf1ZqYDmXhdrmGkC+tB2uxEHjJfhisjXjaNAWrOXSz5t8ZUSo/AAsuzbKvNL1yWqa9V0yUvMPZR2SkaX/smTkQi5/AVBLAwQUAAAICAAACCHsupPWVmwAAAB3AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9Kz0FFQSi9KLMgoBgoYgjilmSkgdrRSoomhpWlSimGisZmBoYWpha6lpZGhcbKpsamRqVmSiUmSUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAAAIIezuGboCcgIAABgFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAAAIIey6k9ZWbAAAAHcAAAAJACQAAAAAAAAAAAAAAL8CAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAdgMAAAAA
+    dataString: UEsDBBQAAAgIAAAIIexeVWBxVwIAAPcEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFtVE1z2jAQ/SuMziVjA06gtxYI6YHAhHRy8UVYa1uDLHkkOXxk+O9dyTZ2aU+It29Xb9+u/EW4NCUkVumV5mytGJDvA+LO5NugC77AiWZK7vgFWs4HZzZ3JOo5b9RyhXjo0owqwGqe/JCZcOQAwUryVOliyTKYK2MNwikVBjCklXXZEqGvATnhz3DmUs54Gj250wVPs2BwxWMC0oLuqC0xeIgaYs2rZCJoUQJzojt6+DRtKwehJ0psqOE48YkSgptGDbHn0ne7K3PQ4NplnGJzXkHwMEMgB57l1hXsZ2/S1IBt9Gl6XnCNLtVlyU9VW1dQc6ilfVJRuYtG0aMXVRdd/xMf1ppTrYqX9t4wcHfYnCeHN3pOqLE9b/vwopMeeoeOVBzoXsBHDvJVrbSqJMOg1ZVLrQyMFt3fW2vzHJJDh9dS78Cq/M+Emvm4Hq6++9Nc8GLvnZzUwE4ob7ifP2gczS8U7LfDNCUQdSp+G3inWX+NmsAz18ZiqOlSOnl7VWlHJUvvmeumsnOlJXi4EV2CpMKet1jG3o/wLta79i7yTN2DaS5vYu07uEvxcMcPgrvQVh1vwzK5Oq7B5JvKCi6hE+0Cr+jTXElZb1jfkzZtV+mUJr20rOLs79UidBLOoj0L6fgxCKfRdDibjcJxEo0j3Mr9ZLInfve4xD6p2NZCG3twarIrLnHP2u/IYKVp6bedaXpc8UuhepZzmapdogHkpq5wEw4aL8FnyZaMo0E7sJZLP2/yFROhkgOw+FYo9p0uT1bTuKsSk5J/KuuQmMz9hyMmV3L9A1BLAwQUAAAICAAACCHsupPWVmwAAAB3AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9Kz0FFQSi9KLMgoBgoYgjilmSkgdrRSoomhpWlSimGisZmBoYWpha6lpZGhcbKpsamRqVmSiUmSUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAAAIIexeVWBxVwIAAPcEAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAAAIIey6k9ZWbAAAAHcAAAAJACQAAAAAAAAAAAAAAKQCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAWwMAAAAA
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -327,7 +327,7 @@ MonoBehaviour:
   heuristic: 2
   heuristicScale: 1
   threadCount: 1
-  maxFrameTime: 1
+  maxFrameTime: 10
   batchGraphUpdates: 0
   graphUpdateBatchingInterval: 0.2
   euclideanEmbedding:
@@ -434,7 +434,7 @@ GameObject:
   m_Component:
   - component: {fileID: 218425988}
   - component: {fileID: 218425989}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Chain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -685,7 +685,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 244652094}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WeaponHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -834,7 +834,7 @@ GameObject:
   m_Component:
   - component: {fileID: 350321462}
   - component: {fileID: 350321463}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TestWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -913,7 +913,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 516584004}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: shotSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1018,7 +1018,7 @@ GameObject:
   - component: {fileID: 783814423}
   - component: {fileID: 783814425}
   - component: {fileID: 783814424}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RoboteBaseBody_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1186,7 +1186,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 843796608}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HookAimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1393,7 +1393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startColor: {r: 0, g: 1, b: 0, a: 1}
   endColor: {r: 1, g: 0, b: 0, a: 1}
-  startHealth: 1000
+  startHealth: 100000
   damageEffect: {fileID: 11400000, guid: f5c7c93b67c289049a55099b38225540, type: 2}
   healthBar: {fileID: 1377914039}
   healthText: {fileID: 1353817933}
@@ -1691,7 +1691,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1421546988}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GadgedHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1837,7 +1837,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1591391870}
   - component: {fileID: 1591391871}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SingleShotLaserLauf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1886,7 +1886,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1793471024}
   - component: {fileID: 1793471025}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SingleShotWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1967,7 +1967,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1804413392}
   - component: {fileID: 1804413393}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GrapplingHook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7623,7 +7623,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2138078547}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: shotSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7655,6 +7655,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: "Testdummy \"gutes St\xFCck\" (1)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378123175270108951, guid: 9cb203cb359797342a9ee904cbd96843,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6378123175270108947, guid: 9cb203cb359797342a9ee904cbd96843,
         type: 3}
@@ -7716,11 +7721,71 @@ PrefabInstance:
       propertyPath: endReachedDistance
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6378123175270108959, guid: 9cb203cb359797342a9ee904cbd96843,
+        type: 3}
+      propertyPath: radius
+      value: 0.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378123175270108959, guid: 9cb203cb359797342a9ee904cbd96843,
+        type: 3}
+      propertyPath: pickNextWaypointDist
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6378123175270108944, guid: 9cb203cb359797342a9ee904cbd96843,
         type: 3}
       propertyPath: projectilePool
       value: 
       objectReference: {fileID: 11400000, guid: 5df42147dd0f2f548b4985091c053bfe,
         type: 2}
+    - target: {fileID: 6378123175270108957, guid: 9cb203cb359797342a9ee904cbd96843,
+        type: 3}
+      propertyPath: stopDistance
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378123175270108957, guid: 9cb203cb359797342a9ee904cbd96843,
+        type: 3}
+      propertyPath: whatIsObstacle.m_Bits
+      value: 1792
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378123174549257147, guid: 9cb203cb359797342a9ee904cbd96843,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378123175270971652, guid: 9cb203cb359797342a9ee904cbd96843,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378123175411599752, guid: 9cb203cb359797342a9ee904cbd96843,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378123175650681202, guid: 9cb203cb359797342a9ee904cbd96843,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378123175893757982, guid: 9cb203cb359797342a9ee904cbd96843,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378123174677675844, guid: 9cb203cb359797342a9ee904cbd96843,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378123174819138168, guid: 9cb203cb359797342a9ee904cbd96843,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378123174441949774, guid: 9cb203cb359797342a9ee904cbd96843,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cb203cb359797342a9ee904cbd96843, type: 3}

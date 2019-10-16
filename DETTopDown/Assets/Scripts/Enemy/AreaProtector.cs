@@ -8,15 +8,16 @@ using Pathfinding;
 public class AreaProtector : MonoBehaviour
 {
     [SerializeField] float speed = 10f;
-    [SerializeField] float nextWaypointDistance = 3f;
     [SerializeField] float protectionRadius = 10f;
     [SerializeField] float followRadius = 20f;
+    [SerializeField] float stopDistance;
     [SerializeField] LayerMask whatToAttack;
+    [SerializeField] LayerMask whatIsObstacle;
 
     AttackAI attackAI;
     Transform origin;
     Collider2D targetHit;
-
+    AIPath path;
     Seeker seeker;
     AIDestinationSetter destSetter;
     bool onTheWay = false;
@@ -45,6 +46,7 @@ public class AreaProtector : MonoBehaviour
         seeker = GetComponent<Seeker>();
         destSetter = GetComponent<AIDestinationSetter>();
         attackAI = GetComponent<AttackAI>();
+        path = GetComponent<AIPath>();
         origin = Instantiate(emptyGameObject, transform.position, transform.rotation).transform;
         destSetter.target = origin;
     }
@@ -59,15 +61,28 @@ public class AreaProtector : MonoBehaviour
             {
                 onTheWay = true;
                 destSetter.target = targetHit.transform;
+                path.endReachedDistance = stopDistance;
                 attackAI.SetTarget(targetHit.gameObject);
             }
         }
         else if (targetHit)
         {
+            Vector3 connectionVec = (targetHit.transform.position - transform.position).normalized;
+            RaycastHit2D lineHit =  Physics2D.Linecast(this.transform.position + connectionVec, targetHit.transform.position + connectionVec, whatIsObstacle);
+            Debug.Log(lineHit.collider.gameObject.name + " is in the way");
+            if (lineHit.collider.gameObject == targetHit.gameObject)
+            {
+                path.endReachedDistance = stopDistance;
+            }
+            else
+            {
+                path.endReachedDistance = 0.3f;
+            }         
             if ((origin.position - targetHit.transform.position).magnitude > followRadius)
             {
                 destSetter.target = origin.transform;
-                onTheWay = false;        
+                onTheWay = false;
+                path.endReachedDistance = 0.3f;
                 attackAI.SetTarget(null);       
             }
         }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3334451209596532381}
   - component: {fileID: 3302969777872482357}
   - component: {fileID: 1968056984090757535}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: AlienSpit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
