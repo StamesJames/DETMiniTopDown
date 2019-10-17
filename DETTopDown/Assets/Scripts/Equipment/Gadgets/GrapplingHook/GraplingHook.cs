@@ -15,7 +15,6 @@ public class GraplingHook : Gadget
 
     PlayerMovement playerMovement;
     HOOKSTATE state = HOOKSTATE.INAKTIVE;
-    AimWeapon aimer;
 
     delegate void HookAction();
     HookAction hookAction;
@@ -24,7 +23,6 @@ public class GraplingHook : Gadget
     {
         playerMovement = transform.root.GetComponent<PlayerMovement>();
         hook.Speed = shootSpeed;
-        aimer = new AimWeapon();
         hookAction = Inaktive;
     }
 
@@ -71,7 +69,7 @@ public class GraplingHook : Gadget
             UpdateChain();
         }
         */
-        aimer.Aim(aimTransform);
+        AimWeapon.Instance.Aim(aimTransform);
     }
 
     void UpdateChain()
