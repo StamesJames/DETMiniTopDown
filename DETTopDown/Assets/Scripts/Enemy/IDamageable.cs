@@ -5,8 +5,6 @@ using UnityEngine;
 public interface IDamageable
 {
     void GetDamaged(float dmg, DAMAGETYPE type);
-    PrefabPooler GetDamageEffect();
-
 }
 
 public enum DAMAGETYPE

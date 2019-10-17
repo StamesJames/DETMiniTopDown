@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class Enemy : MonoBehaviour, IDamageable
+public class Enemy : MonoBehaviour, IDamageable, IEffektGiveable
 {
     [SerializeField] PrefabPooler particlePool;
     [SerializeField] float startHealth;

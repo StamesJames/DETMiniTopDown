@@ -34,12 +34,6 @@ public class StraightSingleProjectile : Projectile
             if (target != null)
             {
                 target.GetDamaged(20,DAMAGETYPE.NORMAL);
-                PrefabPooler particleObject = target.GetDamageEffect();
-                GameObject newObject = particleObject.GetObject(transform, collision.transform);
-
-                newObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg + 180));
-
-                newObject.GetComponent<ParticleSystem>().Play();
             }
         }
         if (!collision.CompareTag(this.tag) || collision.CompareTag("Untagged"))
