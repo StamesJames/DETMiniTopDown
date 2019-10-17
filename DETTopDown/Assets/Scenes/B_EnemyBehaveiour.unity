@@ -188,7 +188,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hookParent: {fileID: 1804413393}
-  speed: 50
 --- !u!61 &53635609
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2003,11 +2002,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa30bd3f95641094d825621120b6784a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chain: {fileID: 218425987}
-  maxLeangth: 0
-  shotSpeed: 0
+  maxLeangth: 10
   pullSpeed: 30
-  hook: {fileID: 53635605}
+  shootSpeed: 40
+  stopDistance: 1.3
+  chain: {fileID: 218425989}
+  hook: {fileID: 53635608}
   aimTransform: {fileID: 843796608}
   shotSpawn: {fileID: 2138078547}
 --- !u!1 &2010291086

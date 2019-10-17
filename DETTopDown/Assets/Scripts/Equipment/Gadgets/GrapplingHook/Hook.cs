@@ -6,8 +6,11 @@ public class Hook : MonoBehaviour
 {
 
     [SerializeField] GraplingHook hookParent;
+
+    float speed = 30f;
     Rigidbody2D rb;
-    [SerializeField] float speed;
+
+    public float Speed { get => speed; set => speed = value; }
 
     private void Awake()
     {
@@ -16,11 +19,13 @@ public class Hook : MonoBehaviour
 
     private void OnEnable()
     {
-        rb.velocity = transform.right * speed;
+        rb.velocity = transform.right * Speed;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Collided with: " + collision.gameObject.name);
+
         if (!collision.CompareTag("Player"))
         {
             transform.SetParent(collision.transform);
