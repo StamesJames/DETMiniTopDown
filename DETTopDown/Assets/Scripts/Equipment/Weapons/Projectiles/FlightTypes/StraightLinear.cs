@@ -9,6 +9,8 @@ public class StraightLinear : MonoBehaviour
     Rigidbody2D rb;
     [SerializeField] float speed;
 
+    public float Speed { get => speed; }
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -16,7 +18,7 @@ public class StraightLinear : MonoBehaviour
 
     private void OnEnable()
     {
-        rb.velocity = transform.right * speed;
+        rb.velocity = transform.right * Speed;
     }
 
 }

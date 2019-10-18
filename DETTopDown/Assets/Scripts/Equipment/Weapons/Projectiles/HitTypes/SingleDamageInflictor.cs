@@ -6,11 +6,11 @@ public class SingleDamageInflictor : MonoBehaviour
 {
     [SerializeField] DAMAGETYPE damagetype;
     [SerializeField] float damage;
-    [SerializeField] string whatToHit;
+    [SerializeField] LayerMask whatToHit;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(whatToHit))
+        if (((1 << collision.gameObject.layer) & whatToHit) > 0)
         {
             IDamageable target = collision.GetComponent<IDamageable>();
             if (target != null)

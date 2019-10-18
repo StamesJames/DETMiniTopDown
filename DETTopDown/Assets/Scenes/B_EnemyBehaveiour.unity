@@ -2020,7 +2020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: SingleShotPistol
   shotSpawn: {fileID: 516584004}
-  fireRate: 60
+  fireRate: 300
   projectilePool: {fileID: 11400000, guid: b034c2c4deb76e3468b9591df5d6f704, type: 2}
 --- !u!1 &1793471023
 GameObject:
@@ -7885,6 +7885,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378123175270108950, guid: 9cb203cb359797342a9ee904cbd96843,
+        type: 3}
+      propertyPath: startHealth
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cb203cb359797342a9ee904cbd96843, type: 3}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TargetHitEffectPlayer : MonoBehaviour
 {
-    [SerializeField] string whatToHit;
+    [SerializeField] LayerMask whatToHit;
 
     Rigidbody2D rb;
 
@@ -15,7 +15,7 @@ public class TargetHitEffectPlayer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(whatToHit))
+        if (((1 << collision.gameObject.layer) & whatToHit) > 0)
         {
             IEffektGiveable target = collision.gameObject.GetComponent<IEffektGiveable>();
 
