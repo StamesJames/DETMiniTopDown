@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 8114297907913585216}
   - component: {fileID: 3344688408523269318}
   - component: {fileID: 6159087115231891315}
-  - component: {fileID: 6378160566166494279}
   - component: {fileID: 2719411303418540215}
   - component: {fileID: 2984380141057347999}
   - component: {fileID: 6737763777609487085}
@@ -155,19 +154,6 @@ MonoBehaviour:
   whatToHit:
     serializedVersion: 2
     m_Bits: 1024
---- !u!114 &6378160566166494279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3485774231586064673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcddec6b8b5b055408d7f883b3cd7df0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePool: {fileID: 11400000, guid: b034c2c4deb76e3468b9591df5d6f704, type: 2}
 --- !u!114 &2719411303418540215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,6 +184,7 @@ MonoBehaviour:
   whatToHit:
     serializedVersion: 2
     m_Bits: 1280
+  pooler: {fileID: 11400000, guid: b034c2c4deb76e3468b9591df5d6f704, type: 2}
 --- !u!114 &6737763777609487085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,3 +198,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 3
+  pooler: {fileID: 11400000, guid: b034c2c4deb76e3468b9591df5d6f704, type: 2}

@@ -2,17 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SelfPooler))]
 public class DestroyOverTime : MonoBehaviour
 {
     [SerializeField] float lifeTime;
+    [SerializeField] PrefabPooler pooler;
 
-    SelfPooler pooler;
-
-    private void Awake()
-    {
-        pooler = GetComponent<SelfPooler>();
-    }
+    bool poolMe = false;
 
     private void OnEnable()
     {
@@ -21,7 +16,16 @@ public class DestroyOverTime : MonoBehaviour
 
     void PoolMe()
     {
-        pooler.PoolMe();
+        poolMe = true; 
+    }
+
+    private void LateUpdate()
+    {
+        if (poolMe)
+        {
+            poolMe = false;
+            pooler.PoolObject(this.gameObject);
+        }
     }
 
     private void OnDisable()

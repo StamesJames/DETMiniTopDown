@@ -41,4 +41,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IEffektGiveable
         return damageEffect;
     }
 
+    public void GetPushed(Vector2 direction, float force)
+    {
+        Debug.LogError("Player GetPushed Not Implementet");
+        throw new System.NotImplementedException();
+    }
 }

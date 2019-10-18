@@ -2,26 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SelfPooler))]
 public class DestroyOnHit : MonoBehaviour
 {
     [SerializeField] LayerMask whatToHit;
+    [SerializeField] PrefabPooler pooler;
 
-    SelfPooler pooler;
-
-    // Start is called before the first frame update
-    void Awake()
-    {
-        pooler = GetComponent<SelfPooler>();
-    }
-
+    bool disable = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log( "Verundung: " + ((collision.gameObject.layer & whatToHit) > 0 ));
         if ( (int) ( (1 << collision.gameObject.layer) & whatToHit) > 0)
         {
-            pooler.PoolMe();
+            disable = true;
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (disable)
+        {
+            disable = false;
+            pooler.PoolObject(this.gameObject);           
         }
     }
 }
