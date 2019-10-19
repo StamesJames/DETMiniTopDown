@@ -10,10 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 3858010328872159881}
   - component: {fileID: 6074673770641323458}
-  - component: {fileID: 3334451209596532381}
   - component: {fileID: 3302969777872482357}
   - component: {fileID: 1968056984090757535}
-  m_Layer: 0
+  - component: {fileID: -6101269332241740477}
+  - component: {fileID: 8992481523509406263}
+  - component: {fileID: 3485006826644535542}
+  - component: {fileID: 452029014558846132}
+  - component: {fileID: 6425590517226629395}
+  m_Layer: 11
   m_Name: AlienSpit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,22 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3334451209596532381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6596580084825682686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54e35ea9a2bdc1d4a88a11eb24952931, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 15
-  lifeTime: 3
-  projectilePool: {fileID: 11400000, guid: 5df42147dd0f2f548b4985091c053bfe, type: 2}
-  whatToHit: Player
 --- !u!50 &3302969777872482357
 Rigidbody2D:
   serializedVersion: 4
@@ -136,3 +124,78 @@ CapsuleCollider2D:
   m_Offset: {x: -0.006078965, y: 0.0052108024}
   m_Size: {x: 0.2661582, y: 0.06294697}
   m_Direction: 1
+--- !u!114 &-6101269332241740477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6596580084825682686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e73f6fd3e642b524aa656e0311c33b35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
+--- !u!114 &8992481523509406263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6596580084825682686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63b5c1e11e02b9945afcec15f9c463f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatToHit:
+    serializedVersion: 2
+    m_Bits: 512
+--- !u!114 &3485006826644535542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6596580084825682686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e24221ecdf8b2d4383c34e2c97ebc7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damagetype: 0
+  damage: 20
+  whatToHit:
+    serializedVersion: 2
+    m_Bits: 512
+--- !u!114 &452029014558846132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6596580084825682686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bad99c7d741617340af5f594b5cc2e33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatToHit:
+    serializedVersion: 2
+    m_Bits: 768
+  pooler: {fileID: 11400000, guid: 5df42147dd0f2f548b4985091c053bfe, type: 2}
+--- !u!114 &6425590517226629395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6596580084825682686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e8bc8b226ac4848a3b2dbdb6c7deaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 3
+  pooler: {fileID: 11400000, guid: 5df42147dd0f2f548b4985091c053bfe, type: 2}

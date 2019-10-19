@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Weapon : MonoBehaviour, ITriggerable
+public abstract class Gadget : MonoBehaviour, ITriggerable
 {
-    [SerializeField] string weaponName = "!!!UNNAMED!!!";
+    [SerializeField] string gadgetName = "!!!UNAMED!!!";
     public abstract void Trigger();
+
 }

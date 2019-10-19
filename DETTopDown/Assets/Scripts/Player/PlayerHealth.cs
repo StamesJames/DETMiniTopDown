@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class PlayerHealth : MonoBehaviour, IDamageable
+public class PlayerHealth : MonoBehaviour, IDamageable, IEffektGiveable
 {
     [SerializeField] Color startColor;
     [SerializeField] Color endColor;
@@ -41,4 +41,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         return damageEffect;
     }
 
+    public void GetPushed(Vector2 direction, float force)
+    {
+        Debug.LogError("Player GetPushed Not Implementet");
+        throw new System.NotImplementedException();
+    }
 }

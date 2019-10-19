@@ -5,19 +5,23 @@ using UnityEngine;
 public class SingleShot : Weapon
 {
     [SerializeField] Transform shotSpawn;
+    [Tooltip("Fire Rate in shots / min")]
+    [Header("Shot Rate in shots / min")]
     [SerializeField] float fireRate;
     [SerializeField] PrefabPooler projectilePool;
 
     float shotCd;
     float nextShot = 0;
-    AimWeapon aimer;
 
+    private void OnValidate()
+    {
+        if (fireRate > 0) shotCd = 1 / fireRate * 60;
+    }
 
     private void Start()
     {
-        if (fireRate > 0) shotCd = 1 / fireRate;
+        if (fireRate > 0) shotCd = 1 / fireRate * 60;
         else shotCd = float.PositiveInfinity;
-        aimer = new AimWeapon();
     }
 
     private void Update()
@@ -35,13 +39,12 @@ public class SingleShot : Weapon
 
     private void FixedUpdate()
     {
-        aimer.Aim(transform);
+        AimWeapon.Instance.Aim(transform);
     }
 
     public override void Trigger()
     {
         if (shotSpawn && projectilePool && !PauseMenu.Instance.IsPaused)
-
         {
             projectilePool.GetObject(shotSpawn);
             nextShot = shotCd;

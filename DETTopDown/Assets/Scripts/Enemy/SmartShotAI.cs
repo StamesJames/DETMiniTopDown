@@ -10,7 +10,7 @@ public class SmartShotAI : AttackAI
     [SerializeField] Transform shotSpawn;
 
     Rigidbody2D targetRB;
-    Projectile projectile;
+    StraightLinear projectile;
     Vector2 aimSpot;
     float projectileSpeed;
     float shotCD;
@@ -26,8 +26,8 @@ public class SmartShotAI : AttackAI
         {
             shotCD = float.PositiveInfinity;
         }
+        projectile = projectilePool.GetPrefab().GetComponent<StraightLinear>();
         projectileSpeed = projectile.Speed;
-        projectile = projectilePool.GetPrefab().GetComponent<Projectile>();
     }
 
     public override void SetTarget(GameObject target)

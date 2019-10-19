@@ -4,7 +4,20 @@ using UnityEngine;
 
 public class AimWeapon
 {
-
+    static AimWeapon _instance;
+    public static AimWeapon Instance {
+        get {
+            if (_instance != null)
+            {
+                return _instance;
+            }
+            else
+            {
+               _instance = new AimWeapon();
+               return _instance;
+            }
+        }
+    }
 
     Camera cam;
 
@@ -12,6 +25,7 @@ public class AimWeapon
     {
         cam = Camera.main;
     }
+
 
     public void Aim(Transform from)
     {

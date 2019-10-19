@@ -4,20 +4,26 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class Enemy : MonoBehaviour, IDamageable
+public class Enemy : MonoBehaviour, IDamageable, IEffektGiveable
 {
     [SerializeField] PrefabPooler particlePool;
     [SerializeField] float startHealth;
-    float lifetotal;
-
     [Header("Unity Stuff")]
     [SerializeField] Image healthBar;
+    float lifetotal;
+
+    Rigidbody2D rb;
+
 
     void Awake(){
-        lifetotal = startHealth;
-        healthBar.fillAmount = lifetotal/startHealth;
+        rb = GetComponent<Rigidbody2D>();
     }
 
+    private void OnEnable()
+    {
+        lifetotal = startHealth;
+        healthBar.fillAmount = lifetotal/startHealth;       
+    }
 
     public void GetDamaged(float dmg, DAMAGETYPE type)
     {
@@ -37,5 +43,10 @@ public class Enemy : MonoBehaviour, IDamageable
     }
     public void DestroyMe(){
         Destroy(gameObject);
+    }
+
+    public void GetPushed(Vector2 direction, float force)
+    {
+        rb.AddForce(direction.normalized * force);
     }
 }
