@@ -2,21 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SingleDamageInflictor : MonoBehaviour
+public class ParticleDamage : MonoBehaviour
 {
     [SerializeField] DAMAGETYPE damagetype;
     [SerializeField] float damage;
     [SerializeField] LayerMask whatToHit;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnParticleCollision(GameObject other)
     {
-        if (((1 << collision.gameObject.layer) & whatToHit) > 0)
+        Debug.Log("particle Hit");
+        if (((1 << other.gameObject.layer) & whatToHit) > 0)
         {
-            IDamageable target = collision.GetComponent<IDamageable>();
+            IDamageable target = other.GetComponent<IDamageable>();
             if (target != null)
             {
                 target.GetDamaged(20, damagetype);
             }
         }
     }
+
 }
