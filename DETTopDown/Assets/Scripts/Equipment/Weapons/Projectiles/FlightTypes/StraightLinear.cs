@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class StraightLinear : MonoBehaviour
+public class StraightLinear : FlightType
 {
 
     Rigidbody2D rb;
-    [SerializeField] float speed;
-
-    public float Speed { get => speed; }
 
     void Awake()
     {
