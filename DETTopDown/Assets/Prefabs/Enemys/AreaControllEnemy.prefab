@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6378123174441949769}
   - component: {fileID: 6378123174441949771}
   - component: {fileID: 6378123174441949768}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 6378123174549256263}
   - component: {fileID: 6378123174549256260}
   - component: {fileID: 6378123174549256261}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6378123174677675847}
   - component: {fileID: 6378123174677675846}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TestWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 6378123174819138171}
   - component: {fileID: 6378123174819138053}
   - component: {fileID: 6378123174819138170}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: HealthBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,14 +420,17 @@ GameObject:
   m_Component:
   - component: {fileID: 6378123175270108947}
   - component: {fileID: 6378123175270108945}
+  - component: {fileID: 2311373009261507616}
   - component: {fileID: 6378123175270108950}
   - component: {fileID: 6378123175270108956}
   - component: {fileID: 6378123175270108957}
   - component: {fileID: 6378123175270108946}
   - component: {fileID: 6378123175270108959}
-  - component: {fileID: 6378123175270108944}
-  m_Layer: 0
-  m_Name: "Testdummy _gutes St\xFCck_ (1)"
+  - component: {fileID: 2487733642871383158}
+  - component: {fileID: 6139823586102734345}
+  - component: {fileID: 4984035816072903909}
+  m_Layer: 10
+  m_Name: AreaControllEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -481,6 +484,27 @@ PolygonCollider2D:
       - {x: 0.00000004371139, y: -0.5}
       - {x: 0.43301272, y: -0.24999996}
       - {x: 0.43301272, y: 0.24999996}
+--- !u!50 &2311373009261507616
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6378123175270108951}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!114 &6378123175270108950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,12 +561,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  nextWaypointDistance: 3
   protectionRadius: 7.01
-  followRadius: 20
+  followRadius: 13.07
+  stopDistance: 7
   whatToAttack:
     serializedVersion: 2
     m_Bits: 512
+  whatIsObstacle:
+    serializedVersion: 2
+    m_Bits: 1280
 --- !u!114 &6378123175270108946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -593,7 +620,7 @@ MonoBehaviour:
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
   constrainInsideGraph: 0
---- !u!114 &6378123175270108944
+--- !u!114 &2487733642871383158
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -602,13 +629,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 6378123175270108951}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff06025e862a3f740bdd5c54dd4085a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a2a7723e86653348be063b4ee70d867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePool: {fileID: 11400000, guid: b034c2c4deb76e3468b9591df5d6f704, type: 2}
-  weapon: {fileID: 6378123175411599755}
-  shotRate: 5
-  shotSpawn: {fileID: 6378123175650681213}
+  whatToShoot: {fileID: 11400000, guid: 5df42147dd0f2f548b4985091c053bfe, type: 2}
+  shotRate: 200
+  shotSpawns:
+  - {fileID: 6378123175650681213}
+--- !u!114 &6139823586102734345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6378123175270108951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ebb70508b5276a4f9dfa176b704e4f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4984035816072903909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6378123175270108951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe530bd90df20a048ac2bfde8f01b1f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatToAims:
+  - {fileID: 6378123175411599755}
+  whatGetsShot: {fileID: 11400000, guid: 5df42147dd0f2f548b4985091c053bfe, type: 2}
 --- !u!1 &6378123175270971652
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,7 +674,7 @@ GameObject:
   - component: {fileID: 6378123175270971655}
   - component: {fileID: 6378123175270971649}
   - component: {fileID: 6378123175270971654}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -692,7 +746,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6378123175411599755}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -724,7 +778,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6378123175650681213}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ShotSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -755,7 +809,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6378123175893757977}
   - component: {fileID: 6378123175893757976}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}

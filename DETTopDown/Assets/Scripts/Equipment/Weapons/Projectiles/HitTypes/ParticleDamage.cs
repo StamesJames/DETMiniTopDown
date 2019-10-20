@@ -10,13 +10,12 @@ public class ParticleDamage : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        Debug.Log("particle Hit");
         if (((1 << other.gameObject.layer) & whatToHit) > 0)
         {
             IDamageable target = other.GetComponent<IDamageable>();
             if (target != null)
             {
-                target.GetDamaged(20, damagetype);
+                target.GetDamaged(damage, damagetype);
             }
         }
     }

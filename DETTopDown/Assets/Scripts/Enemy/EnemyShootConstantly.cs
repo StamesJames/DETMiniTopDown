@@ -8,6 +8,7 @@ public class EnemyShootConstantly : MonoBehaviour
     [SerializeField] float shotRate;
     [SerializeField] Transform[] shotSpawns;
 
+    EnemyMasterAI masterAI;
     bool isShooting;
     float shotCD;
     float nextShot = 0;
@@ -21,6 +22,30 @@ public class EnemyShootConstantly : MonoBehaviour
         else
         {
             shotCD = float.PositiveInfinity;
+        }
+
+        masterAI = GetComponent<EnemyMasterAI>();
+    }
+
+    private void OnEnable()
+    {
+        masterAI.onTargetFound += OnTargetFound;
+    }
+
+    private void OnDisable()
+    {
+        masterAI.onTargetFound -= OnTargetFound;
+    }
+
+    void OnTargetFound(GameObject target)
+    {
+        if (target != null)
+        {
+            isShooting = true;
+        }
+        else
+        {
+            isShooting = false;
         }
     }
 

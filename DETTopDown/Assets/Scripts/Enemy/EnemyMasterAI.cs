@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class EnemyMasterAI : MonoBehaviour
 {
-    public delegate void TargetFound(GameObject target);
-    public event TargetFound targetFound;
+    public delegate void OnTargetFound(GameObject target);
+    public event OnTargetFound onTargetFound;
 
     GameObject currentTarget;
 
     public void SetTarget(GameObject target)
     {
         currentTarget = target;
-        targetFound?.Invoke(currentTarget);
+        onTargetFound?.Invoke(currentTarget);
     }
 }

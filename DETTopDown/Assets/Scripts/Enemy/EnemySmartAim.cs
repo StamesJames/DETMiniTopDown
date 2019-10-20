@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySmartAim : MonoBehaviour
 {
-    [SerializeField] Transform whatToAim;
+    [SerializeField] Transform[] whatToAims;
     [SerializeField] PrefabPooler whatGetsShot;
 
     GameObject currentTarget;
@@ -12,18 +12,32 @@ public class EnemySmartAim : MonoBehaviour
     FlightType projectile;
     Vector2 aimSpot;
     float projectileSpeed;
+    EnemyMasterAI masterAI;
 
     private void Awake()
     {
         projectile = whatGetsShot.GetPrefab().GetComponent<FlightType>();
         projectileSpeed = projectile.Speed;
+        masterAI = GetComponent<EnemyMasterAI>();
     }
 
-    public void SetTarget(GameObject target)
+    private void OnEnable()
+    {
+        masterAI.onTargetFound += OnTargetFound;
+    }
+
+    private void OnDisable()
+    {
+        masterAI.onTargetFound -= OnTargetFound;    
+    }
+
+    void OnTargetFound(GameObject target)
     {
         currentTarget = target;
         if (target)
+        {
             targetRb = target.GetComponent<Rigidbody2D>();
+        }
     }
 
     private void Update()
@@ -31,9 +45,12 @@ public class EnemySmartAim : MonoBehaviour
         if (currentTarget)
         {
             aimSpot = (Vector2)targetRb.transform.position + targetRb.velocity * ((currentTarget.transform.position - transform.position).magnitude / projectileSpeed);
-            Vector2 lookVec = aimSpot - (Vector2)transform.position;
-            float lookAngle = Mathf.Atan2(lookVec.y, lookVec.x) * Mathf.Rad2Deg;
-            whatToAim.rotation = Quaternion.Euler(new Vector3(0, 0, lookAngle));
+
+            foreach (Transform whatToAim in whatToAims)
+            {
+                AimWeapon.Instance.Aim(whatToAim.transform, aimSpot);
+            }
+
         }
     }
 
