@@ -782,7 +782,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -11950,11 +11950,13 @@ MonoBehaviour:
   fireRate: 300
   projectilePool: {fileID: 11400000, guid: b034c2c4deb76e3468b9591df5d6f704, type: 2}
   shotParticles: {fileID: 516584006}
+  shotSound: {fileID: 8300000, guid: dc52e37beaa35ad48a87ce167aa76a8b, type: 3}
+  soundPitchFrom: 0.98
+  soundPitchTo: 1.02
   magnitude: 2
   roughness: 5
   fadeInTime: 0.25
   fadeOutTime: 0.25
-  shotSound: {fileID: 8300000, guid: dc52e37beaa35ad48a87ce167aa76a8b, type: 3}
 --- !u!95 &1591391872
 Animator:
   serializedVersion: 3

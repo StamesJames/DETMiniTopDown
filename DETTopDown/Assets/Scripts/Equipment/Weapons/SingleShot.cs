@@ -12,12 +12,14 @@ public class SingleShot : Weapon
     [SerializeField] PrefabPooler projectilePool;
     [Header("EffectsStuff")]
     [SerializeField] ParticleSystem shotParticles;
+    [SerializeField] AudioClip shotSound;
+    [SerializeField] float soundPitchFrom = 0.8f;
+    [SerializeField] float soundPitchTo = 1.2f;
     [Header("Camera Shake Kram")]
     [SerializeField] float magnitude = 4f;
     [SerializeField] float roughness = 4f;
     [SerializeField] float fadeInTime = 1f;
     [SerializeField] float fadeOutTime = 1f;
-    [SerializeField] AudioClip shotSound;
 
     AudioSource audioSource;
     float shotCd;
@@ -68,7 +70,9 @@ public class SingleShot : Weapon
             anim.SetTrigger("Shoot");
             CameraShaker.Instance.ShakeOnce(magnitude, roughness, fadeInTime, fadeOutTime);
             shotParticles.Play();
+            audioSource.pitch = Random.Range(soundPitchFrom, soundPitchTo);
             audioSource.PlayOneShot(shotSound);
+
         }       
     }
 

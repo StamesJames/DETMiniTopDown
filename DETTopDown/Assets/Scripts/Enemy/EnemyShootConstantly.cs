@@ -8,6 +8,8 @@ public class EnemyShootConstantly : MonoBehaviour
     [SerializeField] float shotRate;
     [SerializeField] Transform[] shotSpawns;
     [SerializeField] AudioClip shotSound;
+    [SerializeField] float soundPitchFrom = 0.98f;
+    [SerializeField] float soundPitchTo = 1.02f;
 
     AudioSource audioSource;
     EnemyMasterAI masterAI;
@@ -61,6 +63,7 @@ public class EnemyShootConstantly : MonoBehaviour
                 foreach (Transform shotSpawn in shotSpawns)
                 {
                     whatToShoot.GetObject(shotSpawn);
+                    audioSource.pitch = Random.Range(soundPitchFrom, soundPitchTo);
                     audioSource.PlayOneShot(shotSound);
                 }
                 nextShot = shotCD;
