@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EZCameraShake;
 
 public class SingleShot : Weapon
 {
@@ -9,9 +10,23 @@ public class SingleShot : Weapon
     [Header("Shot Rate in shots / min")]
     [SerializeField] float fireRate;
     [SerializeField] PrefabPooler projectilePool;
+    [Header("EffectsStuff")]
+    [SerializeField] ParticleSystem shotParticles;
+    [Header("Camera Shake Kram")]
+    [SerializeField] float magnitude = 4f;
+    [SerializeField] float roughness = 4f;
+    [SerializeField] float fadeInTime = 1f;
+    [SerializeField] float fadeOutTime = 1f;
+
 
     float shotCd;
     float nextShot = 0;
+    Animator anim;
+
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     private void OnValidate()
     {
@@ -48,6 +63,9 @@ public class SingleShot : Weapon
         {
             projectilePool.GetObject(shotSpawn);
             nextShot = shotCd;
+            anim.SetTrigger("Shoot");
+            CameraShaker.Instance.ShakeOnce(magnitude, roughness, fadeInTime, fadeOutTime);
+            shotParticles.Play();
         }       
     }
 
