@@ -9,6 +9,7 @@ public class ExplosionOverTime : MonoBehaviour
     [SerializeField] float explosionDamage;
     [SerializeField] float explosionForce;
     [SerializeField] float explosionTime;
+    [SerializeField] float pushBackTime = 1f;
     [SerializeField] DAMAGETYPE damageType;
     [SerializeField] PrefabPooler explosionEffect;
 
@@ -37,7 +38,7 @@ public class ExplosionOverTime : MonoBehaviour
             IDamageable target = hit.GetComponent<IDamageable>();
             if (target != null)
             {
-                target.GetPushed((hit.transform.position - this.transform.position).normalized, explosionForce);
+                target.GetPushed((hit.transform.position - this.transform.position).normalized, explosionForce,pushBackTime);
                 target.GetDamaged(explosionDamage, damageType);
             }
         }       
