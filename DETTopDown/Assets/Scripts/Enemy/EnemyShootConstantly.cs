@@ -7,7 +7,9 @@ public class EnemyShootConstantly : MonoBehaviour
     [SerializeField] PrefabPooler whatToShoot;
     [SerializeField] float shotRate;
     [SerializeField] Transform[] shotSpawns;
+    [SerializeField] AudioClip shotSound;
 
+    AudioSource audioSource;
     EnemyMasterAI masterAI;
     bool isShooting;
     float shotCD;
@@ -24,6 +26,7 @@ public class EnemyShootConstantly : MonoBehaviour
             shotCD = float.PositiveInfinity;
         }
 
+        audioSource = GetComponent<AudioSource>();
         masterAI = GetComponent<EnemyMasterAI>();
     }
 
@@ -58,6 +61,7 @@ public class EnemyShootConstantly : MonoBehaviour
                 foreach (Transform shotSpawn in shotSpawns)
                 {
                     whatToShoot.GetObject(shotSpawn);
+                    audioSource.PlayOneShot(shotSound);
                 }
                 nextShot = shotCD;
             }

@@ -17,8 +17,9 @@ public class SingleShot : Weapon
     [SerializeField] float roughness = 4f;
     [SerializeField] float fadeInTime = 1f;
     [SerializeField] float fadeOutTime = 1f;
+    [SerializeField] AudioClip shotSound;
 
-
+    AudioSource audioSource;
     float shotCd;
     float nextShot = 0;
     Animator anim;
@@ -26,6 +27,7 @@ public class SingleShot : Weapon
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnValidate()
@@ -66,6 +68,7 @@ public class SingleShot : Weapon
             anim.SetTrigger("Shoot");
             CameraShaker.Instance.ShakeOnce(magnitude, roughness, fadeInTime, fadeOutTime);
             shotParticles.Play();
+            audioSource.PlayOneShot(shotSound);
         }       
     }
 
