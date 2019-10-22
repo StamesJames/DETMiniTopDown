@@ -11,5 +11,5 @@ public interface IDamageable
 
 public enum DAMAGETYPE
 {
-    NORMAL, MAGIC
+    NORMAL, PIERCING, PLASMA, FROST, FIRE, ELEKTRIC
 }

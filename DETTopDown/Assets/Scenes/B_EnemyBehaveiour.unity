@@ -8870,7 +8870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Parent: {fileID: 1031878195}
   Obj: {fileID: 1268876544}
-  Radius: 4.5
+  Radius: 1.5
 --- !u!4 &1268876544
 Transform:
   m_ObjectHideFlags: 0

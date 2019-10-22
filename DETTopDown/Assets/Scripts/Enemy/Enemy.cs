@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Pathfinding;
 
-public class Enemy : MonoBehaviour, IDamageable, IEffektGiveable
+public class Enemy : MonoBehaviour, IDamageable, IEffektGiveable, IStatusEffectable
 {
     [SerializeField] PrefabPooler particlePool;
     [SerializeField] float startHealth;
@@ -14,6 +14,11 @@ public class Enemy : MonoBehaviour, IDamageable, IEffektGiveable
 
     Rigidbody2D rb;
 
+    // Status Effect Kram
+    List<StatusEffect> statusEffects = new List<StatusEffect>();
+    event OnTick onTickEvent;
+
+    // Pathfinding Kram
     Seeker seeker;
     AIPath path;
 
@@ -27,6 +32,11 @@ public class Enemy : MonoBehaviour, IDamageable, IEffektGiveable
     {
         lifetotal = startHealth;
         healthBar.fillAmount = lifetotal/startHealth;       
+    }
+
+    private void Update()
+    {
+        onTickEvent?.Invoke();
     }
 
     public void GetDamaged(float dmg, DAMAGETYPE type)
@@ -68,5 +78,30 @@ public class Enemy : MonoBehaviour, IDamageable, IEffektGiveable
     {
         seeker.enabled = true;
         path.enabled = true;
+    }
+
+    public IDamageable GetIDamageable()
+    {
+        return this;
+    }
+
+    public void AddStatusEffect(StatusEffect effect)
+    {
+        statusEffects.Add(effect);
+    }
+
+    public void RemoveStatusEffect(StatusEffect effect)
+    {
+        statusEffects.Remove(effect);
+    }
+
+    public void AddOnTick(OnTick onTick)
+    {
+        onTickEvent += onTick;
+    }
+
+    public void RemoveOnTick(OnTick onTick)
+    {
+        onTickEvent -= onTick;
     }
 }
