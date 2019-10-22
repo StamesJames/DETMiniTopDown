@@ -16,9 +16,11 @@ public class DoT_SE : StatusEffect
     public DoT_SE(DoT_SE copieThis ,GameObject target)
     {
         damagePerTick = copieThis.damagePerTick;
+        tickCount = copieThis.tickCount;
         timeBetweenTicks = copieThis.timeBetweenTicks;
         nextTick = timeBetweenTicks;
         damageType = copieThis.damageType;
+
         this.target = target;
         targetStatusEffectable = target.GetComponent<IStatusEffectable>();
         if (targetStatusEffectable == null)
@@ -34,15 +36,19 @@ public class DoT_SE : StatusEffect
 
     void DotTick()
     {
+        //Debug.Log("Current Tick count: " + currentTickCount);
         if (nextTick <= 0)
         {
+            //Debug.Log("Dot hat getickt und hat target: " + target.name);
             targetStatusEffectable.GetIDamageable().GetDamaged(damagePerTick, damageType);
+            nextTick = timeBetweenTicks;
+            currentTickCount++;
         }
         else if (nextTick > 0)
         {
+            //Debug.Log("Next Tick in: " + nextTick);
             nextTick -= Time.deltaTime;
         }
-        currentTickCount++;
         if (currentTickCount >= tickCount)
         {
             RemoveDot();
@@ -51,6 +57,7 @@ public class DoT_SE : StatusEffect
 
     void RemoveDot()
     {
+        Debug.Log("dot got removed");
         targetStatusEffectable.RemoveOnTick(DotTick);
         targetStatusEffectable.RemoveStatusEffect(this);
     }

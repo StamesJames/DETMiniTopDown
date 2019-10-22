@@ -72,6 +72,7 @@ public class Enemy : MonoBehaviour, IDamageable, IEffektGiveable, IStatusEffecta
     private void OnDisable()
     {
         CancelInvoke();
+        onTickEvent = null;
     }
 
     void StopGettingPushed()

@@ -647,7 +647,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &224717761
 Transform:
   m_ObjectHideFlags: 0
@@ -14082,7 +14082,7 @@ MonoBehaviour:
   weaponName: SingleShotPistol
   shotSpawn: {fileID: 516584004}
   fireRate: 300
-  projectilePool: {fileID: 11400000, guid: 55ca8685b8b12da4e9a81e741447cde2, type: 2}
+  projectilePool: {fileID: 11400000, guid: b034c2c4deb76e3468b9591df5d6f704, type: 2}
   shotParticles: {fileID: 516584006}
   shotSound: {fileID: 8300000, guid: dc52e37beaa35ad48a87ce167aa76a8b, type: 3}
   soundPitchFrom: 0.98
@@ -46013,7 +46013,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1793471024
 Transform:
   m_ObjectHideFlags: 0

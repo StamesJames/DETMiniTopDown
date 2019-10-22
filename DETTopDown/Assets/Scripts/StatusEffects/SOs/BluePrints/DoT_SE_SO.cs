@@ -9,6 +9,7 @@ public class DoT_SE_SO : StatusEffectSO
 
     public override StatusEffect Fabricate(GameObject target)
     {
+        //Debug.Log("DoT_SE fabricated");
         return new DoT_SE(dotStatusEffect, target);
     }
     
