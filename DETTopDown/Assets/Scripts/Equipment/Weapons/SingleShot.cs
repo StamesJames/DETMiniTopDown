@@ -28,10 +28,13 @@ public class SingleShot : Weapon
 
     private void Awake()
     {
+        //Der Animator ist dazu dar die Rückstoß animation zu spielen 
         anim = GetComponent<Animator>();
+        //AudioScource um den Schusssound zu spielen 
         audioSource = GetComponent<AudioSource>();
     }
 
+    //Das ist nur für den edito, das ist wenn im Editor der Wer geändert wird wird das aufgerufen
     private void OnValidate()
     {
         if (fireRate > 0) shotCd = 1 / fireRate * 60;
@@ -39,18 +42,19 @@ public class SingleShot : Weapon
 
     private void Start()
     {
+        //Berechnen der zeit die zwischen den Schüssen sein muss um die gewünschte Schussrate zu erhalten
         if (fireRate > 0) shotCd = 1 / fireRate * 60;
         else shotCd = float.PositiveInfinity;
     }
 
     private void Update()
     {
-
+        //Abfrage ob der Feuer knopf Gedrück wurde und ob der Cooldown schon runter ist. Wür die Maschinen Pistole müsstest du dann hier GetButton("Fire1") nutzen können 
         if (Input.GetButtonDown("Fire1") && nextShot <= 0)
         {
             Trigger();
         }
-        else if (nextShot > 0)
+        else if (nextShot > 0) //wenn der Cooldown der waffe noch tickt dann hier die zeit runter zählen 
         {
             nextShot -= Time.deltaTime;
         }
@@ -58,6 +62,7 @@ public class SingleShot : Weapon
 
     private void FixedUpdate()
     {
+        //Diese Fumktion zielt die angegebene transform (Also hier einfach die Eigene) zur mousposition 
         AimWeapon.Instance.Aim(transform);
     }
 
@@ -65,8 +70,11 @@ public class SingleShot : Weapon
     {
         if (shotSpawn && projectilePool && !PauseMenu.Instance.IsPaused)
         {
+            //Diese Funktion Spawned ein Object aus dem gegebenen PrefabPool
             projectilePool.GetObject(shotSpawn);
+            //resetten des cooldown für den nächsten Schuss
             nextShot = shotCd;
+            //das ist alles nur effekt kram also Rückstoß animation, CameraShake, Mündungsfeuer, SoundPitch abwechseln damit es nicht so monoton ist, sound abspeielen (in der Reihenfole)
             anim.SetTrigger("Shoot");
             CameraShaker.Instance.ShakeOnce(magnitude, roughness, fadeInTime, fadeOutTime);
             shotParticles.Play();
