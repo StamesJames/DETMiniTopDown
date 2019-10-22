@@ -51,6 +51,9 @@ TagManager:
   - name: Player
     uniqueID: 1547912341
     locked: 0
+  - name: TopWallTiles
+    uniqueID: 77397223
+    locked: 0
   - name: UI
     uniqueID: 3405659015
     locked: 0
