@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StraightAccelerated : MonoBehaviour
+public class StraightAccelerated : FlightType
 {
     [SerializeField] float accelerationForce;
     [SerializeField] float maxSpeed = float.PositiveInfinity;
@@ -11,7 +11,8 @@ public class StraightAccelerated : MonoBehaviour
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();   
+        rb = GetComponent<Rigidbody2D>();
+        rb.velocity = transform.right * speed;
     }
 
     private void FixedUpdate()

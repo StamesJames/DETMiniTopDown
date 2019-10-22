@@ -6,7 +6,7 @@ public interface IDamageable
 {
     void GetDamaged(float dmg, DAMAGETYPE type);
 
-    void GetPushed(Vector2 direction, float force);
+    void GetPushed(Vector2 direction, float force, float stunTime);
 }
 
 public enum DAMAGETYPE

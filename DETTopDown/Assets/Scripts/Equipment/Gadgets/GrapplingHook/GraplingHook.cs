@@ -74,8 +74,8 @@ public class GraplingHook : Gadget
 
     void UpdateChain()
     {
-        chain.SetPosition(0, transform.position);
-        chain.SetPosition(1, hook.transform.position);
+        chain.SetPosition(0, transform.position + Vector3.forward * -5);
+        chain.SetPosition(1, hook.transform.position + Vector3.forward * -5);
     }
 
     void StopPulling()
