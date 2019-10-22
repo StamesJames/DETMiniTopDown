@@ -188,7 +188,7 @@ MonoBehaviour:
   explosionWhatToHit:
     serializedVersion: 2
     m_Bits: 1024
-  explosionRadius: 1
+  explosionRadius: 2
   explosionDamage: 30
   explosionForce: 1000
   pushBackTime: 1
@@ -250,7 +250,7 @@ MonoBehaviour:
   explosionWhatToHit:
     serializedVersion: 2
     m_Bits: 1024
-  explosionRadius: 1
+  explosionRadius: 2
   explosionDamage: 30
   explosionForce: 100
   explosionTime: 1
