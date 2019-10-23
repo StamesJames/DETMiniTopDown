@@ -24001,7 +24001,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1569417852
+--- !u!114 &1268876543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268876542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caba078ae8119b44aa6a2423f520a511, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Parent: {fileID: 1031878195}
+  Obj: {fileID: 1268876544}
+  Radius: 1.5
+--- !u!4 &1268876544
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -29074,7 +29089,7 @@ MonoBehaviour:
   weaponName: SingleShotPistol
   shotSpawn: {fileID: 516584004}
   fireRate: 300
-  projectilePool: {fileID: 11400000, guid: 05315b7e874f9c646ab86ee3f494d9e9, type: 2}
+  projectilePool: {fileID: 11400000, guid: b034c2c4deb76e3468b9591df5d6f704, type: 2}
   shotParticles: {fileID: 516584006}
   shotSound: {fileID: 8300000, guid: dc52e37beaa35ad48a87ce167aa76a8b, type: 3}
   soundPitchFrom: 0.98

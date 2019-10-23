@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Assets/Create/MySOBs/ObjectPooler")]
+[CreateAssetMenu(menuName = "MySOBs/ObjectPooler")]
 public class PrefabPooler : ScriptableObject
 {
 

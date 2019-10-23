@@ -66,13 +66,13 @@ public class AreaProtector : MonoBehaviour
 
     void Chasing()
     {
-        Debug.Log("Chasing " + targetHit.gameObject.name);
+        //Debug.Log("Chasing " + targetHit.gameObject.name);
         if (targetHit)
         {
             destSetter.target = targetHit.transform;
             Vector3 connectionVec = (targetHit.transform.position - transform.position).normalized;
             RaycastHit2D lineHit = Physics2D.Linecast(this.transform.position, targetHit.transform.position + connectionVec, whatIsObstacle);
-            Debug.Log(lineHit.collider.gameObject.name + "in The Way");
+            //Debug.Log(lineHit.collider.gameObject.name + "in The Way");
             if (lineHit && lineHit.collider.gameObject == targetHit.gameObject)
             {
                 path.endReachedDistance = stopDistance;
