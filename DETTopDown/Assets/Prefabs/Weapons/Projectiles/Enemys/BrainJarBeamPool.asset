@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 776290c647aee90458699352c6d79ccf, type: 3}
-  m_Name: AlienSpitPool
+  m_Name: BrainJarBeamPool
   m_EditorClassIdentifier: 
   pooledObject: {fileID: 6596580084825682686, guid: 28b0e31992613ad49908bfe25cbc5959,
     type: 3}

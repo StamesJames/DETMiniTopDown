@@ -18,10 +18,10 @@ public class CameraMoving : MonoBehaviour
          MousePos2 = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -transform.position.z));
          //Obj.position.y = ((MousePos2.y - Parent.position.y) / 2.0) + Parent.position.y;
          //Obj.position.x = ((MousePos2.x - Parent.position.x) / 2.0) + Parent.position.x;
-         cameraObject.position = new Vector3((MousePos2.x - followTarget.position.x) / 2.0f + followTarget.position.x, (MousePos2.y - followTarget.position.y) / 2.0f + followTarget.position.y, cameraObject.position.z);
+         cameraObject.position = new Vector3((MousePos2.x - followTarget.position.x) / 5.0f + followTarget.position.x, (MousePos2.y - followTarget.position.y) / 5.0f + followTarget.position.y, cameraObject.position.z);
  
          Dist = Vector2.Distance(new Vector2(cameraObject.position.x, cameraObject.position.y), new Vector2(followTarget.position.x, followTarget.position.y));
- 
+         /*
          if (Dist > Radius)
          {
              var norm = MouseOffset.normalized;
@@ -29,5 +29,6 @@ public class CameraMoving : MonoBehaviour
              //Obj.position.y = norm.y * Radius + Parent.position.y;
              cameraObject.position = new Vector3(norm.x * Radius + followTarget.position.x, norm.y * Radius + followTarget.position.y, cameraObject.position.z);
          }
+         */
      }
 }
