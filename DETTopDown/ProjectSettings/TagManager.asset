@@ -16,8 +16,8 @@ TagManager:
   - 
   - Obstacle
   - Player
-  - 
-  - 
+  - Enemy
+  - Projectile
   - 
   - 
   - 
@@ -42,6 +42,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: GroundTiles
+    uniqueID: 711959941
+    locked: 0
+  - name: WallTiles
+    uniqueID: 1963617417
+    locked: 0
   - name: Player
     uniqueID: 1547912341
+    locked: 0
+  - name: TopWallTiles
+    uniqueID: 77397223
+    locked: 0
+  - name: UI
+    uniqueID: 3405659015
     locked: 0
