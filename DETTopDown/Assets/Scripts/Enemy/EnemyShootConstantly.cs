@@ -10,8 +10,8 @@ public class EnemyShootConstantly : MonoBehaviour
     [SerializeField] AudioClip shotSound;
     [SerializeField] float soundPitchFrom = 0.98f;
     [SerializeField] float soundPitchTo = 1.02f;
+    [SerializeField] AudioSource audioSource;
 
-    AudioSource audioSource;
     EnemyMasterAI masterAI;
     bool isShooting;
     float shotCD;
@@ -27,8 +27,6 @@ public class EnemyShootConstantly : MonoBehaviour
         {
             shotCD = float.PositiveInfinity;
         }
-
-        audioSource = GetComponent<AudioSource>();
         masterAI = GetComponent<EnemyMasterAI>();
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayParticleEffect : TriggerEffect
 {
-    [SerializeField] ParticleSystem particleSystem;
+    [SerializeField] protected ParticleSystem particleSystem;
 
     protected override void Trigger()
     {
