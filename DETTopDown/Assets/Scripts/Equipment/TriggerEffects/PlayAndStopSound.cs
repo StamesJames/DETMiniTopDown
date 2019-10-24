@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class PlayAndStopSound : PressAndReleasEffect
 {
-    [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip audioClip;
+    [SerializeField] AudioSource[] audioSources;
 
     protected override void Releas()
     {
-        audioSource.Stop();
+        foreach (AudioSource audioSource in audioSources)
+        {
+            audioSource.Stop();
+        }
     }
 
     protected override void Trigger()
     {
-        audioSource.clip = audioClip;
-        audioSource.Play();
+        foreach (AudioSource audioSource in audioSources)
+        {
+            audioSource.Play();
+        }
     }
 }

@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PlayParticleEffect : TriggerEffect
 {
-    [SerializeField] protected ParticleSystem particleSystem;
+    [SerializeField] protected ParticleSystem[] particleSystems;
 
     protected override void Trigger()
     {
-        particleSystem.Play();
+        foreach (ParticleSystem particleSystem in particleSystems)
+        {
+            particleSystem.Play();
+        }
     }
 
 }

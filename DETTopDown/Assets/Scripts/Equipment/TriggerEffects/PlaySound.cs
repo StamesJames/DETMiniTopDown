@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PlaySound : TriggerEffect
 {
-    [SerializeField] AudioClip soundToPlay;
+    [SerializeField] AudioClip[] audioClips;
     [SerializeField] AudioSource audioSource;
     [Header("Sound Pitch varriation")]
     [SerializeField] bool varriatePitch = true;
-    [SerializeField] float pitchFrom = 0.95f;
-    [SerializeField] float pitchTo = 1.05f;
+    [SerializeField] float pitchFrom = 0.99f;
+    [SerializeField] float pitchTo = 1.01f;
 
     protected override void Trigger()
     {
@@ -17,6 +17,9 @@ public class PlaySound : TriggerEffect
         {
             audioSource.pitch = Random.Range(pitchFrom, pitchTo);
         }
-        audioSource.PlayOneShot(soundToPlay);
+        foreach (AudioClip audioClip in audioClips)
+        {
+            audioSource.PlayOneShot(audioClip);
+        }
     }
 }

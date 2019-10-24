@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class PlayAndStopParticleEffect : PressAndReleasEffect
 {
-    [SerializeField] ParticleSystem particleSystem;
+    [SerializeField] ParticleSystem[] particleSystems;
 
     protected override void Releas()
     {
-        particleSystem.Stop();
+        foreach (ParticleSystem particleSystem in particleSystems)
+        {
+            particleSystem.Stop();
+        }
     }
 
     protected override void Trigger()
     {
-        particleSystem.Play();
+        foreach (ParticleSystem particleSystem in particleSystems)
+        {
+            particleSystem.Play();
+        }
     }
 }
