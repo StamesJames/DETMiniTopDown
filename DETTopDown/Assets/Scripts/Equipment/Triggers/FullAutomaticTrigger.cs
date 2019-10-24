@@ -6,6 +6,9 @@ public class FullAutomaticTrigger : Trigger
 {
     [SerializeField] float timeBetweenTriggers;
     [SerializeField] string buttonToPress;
+    [Header("TriggerGroup Stuff")]
+    [SerializeField] TriggerGroup triggerGroup;
+    [SerializeField] float triggerGroupCD;
 
     float nextShotIn;
 
@@ -19,10 +22,14 @@ public class FullAutomaticTrigger : Trigger
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown(buttonToPress) && nextShotIn <= 0)
+        if (Input.GetButtonDown(buttonToPress) && nextShotIn <= 0 && ( !triggerGroup || triggerGroup.TriggersActive ))
         {
             OnGettingTriggert?.Invoke();
             nextShotIn = timeBetweenTriggers;
+            if (triggerGroup)
+            {
+                triggerGroup.SetCD(triggerGroupCD);
+            }
         }
         else if (nextShotIn > 0)
         {
