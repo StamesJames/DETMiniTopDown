@@ -197,6 +197,7 @@ MonoBehaviour:
   timeBetweenTriggers: 0
   buttonToPress: Fire1
   triggerGroup: {fileID: 0}
+  sameTimeAsTrigger: 0
   triggerGroupCD: 0
 --- !u!1 &169400471
 GameObject:
@@ -6380,6 +6381,7 @@ MonoBehaviour:
   timeBetweenTriggers: 0.1
   buttonToPress: Fire1
   triggerGroup: {fileID: 169400473}
+  sameTimeAsTrigger: 0
   triggerGroupCD: 0.1
 --- !u!114 &241776785
 MonoBehaviour:
@@ -18745,7 +18747,8 @@ MonoBehaviour:
   timeBetweenTriggers: 0.25
   buttonToPress: Fire1
   triggerGroup: {fileID: 1360782032}
-  triggerGroupCD: 1
+  sameTimeAsTrigger: 1
+  triggerGroupCD: 0.25
 --- !u!114 &853423818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21056,6 +21059,7 @@ MonoBehaviour:
   timeBetweenTriggers: 2
   buttonToPress: Fire1
   triggerGroup: {fileID: 2094201124}
+  sameTimeAsTrigger: 0
   triggerGroupCD: 2
 --- !u!114 &1569865942
 MonoBehaviour:
@@ -27127,6 +27131,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -1609641306001119997, guid: c05f33b877f9ecb41b5786d04a5606eb,
         type: 2}
+    - target: {fileID: 4914643388699322594, guid: d10568e2296ced0498d30dd405838575,
+        type: 3}
+      propertyPath: m_PixelSnapping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914643388699322594, guid: d10568e2296ced0498d30dd405838575,
+        type: 3}
+      propertyPath: m_UpscaleRT
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914643388699322594, guid: d10568e2296ced0498d30dd405838575,
+        type: 3}
+      propertyPath: m_AssetsPPU
+      value: 64
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d10568e2296ced0498d30dd405838575, type: 3}
 --- !u!114 &4984035817569558566
@@ -28164,7 +28183,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7452353140321092081}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.54, y: -0.01, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7452353139814008700}

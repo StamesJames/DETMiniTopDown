@@ -9,9 +9,21 @@ public class TimeTrigger : Trigger
     [Header("Randomize Stuff")]
     [SerializeField] bool randomize = false;
     [SerializeField] float randomizeRange;
+    [Header("TriggerGroup Stuff")]
+    [SerializeField] TriggerGroup triggerGroup;
+    [SerializeField] bool sameTimeAsTrigger = true;
+    [SerializeField] float triggerGroupCD;
 
     public override event GetTriggert OnGettingTriggert;
     float nextTrigger;
+
+    private void OnValidate()
+    {
+        if (sameTimeAsTrigger)
+        {
+            triggerGroupCD = timeBetweenTriggers;
+        }
+    }
 
     private void OnEnable()
     {

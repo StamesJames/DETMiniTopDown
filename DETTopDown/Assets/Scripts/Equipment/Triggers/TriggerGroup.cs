@@ -26,7 +26,7 @@ public class TriggerGroup : MonoBehaviour
             }
             else if (currentCD > 0)
             {
-                currentCD -= Time.time;
+                currentCD -= Time.deltaTime;
             }
         }
     }

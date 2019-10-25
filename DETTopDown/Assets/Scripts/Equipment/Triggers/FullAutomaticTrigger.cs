@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class FullAutomaticTrigger : Trigger
 {
@@ -8,15 +9,28 @@ public class FullAutomaticTrigger : Trigger
     [SerializeField] string buttonToPress;
     [Header("TriggerGroup Stuff")]
     [SerializeField] TriggerGroup triggerGroup;
+    [SerializeField] bool sameTimeAsTrigger = true;
     [SerializeField] float triggerGroupCD;
 
     float nextShotIn;
 
     public override event GetTriggert OnGettingTriggert;
 
+    private void OnValidate()
+    {
+        if (sameTimeAsTrigger)
+        {
+            triggerGroupCD = timeBetweenTriggers;
+        }
+    }
+
     private void Start()
     {
         nextShotIn = 0;
+        if (sameTimeAsTrigger)
+        {
+            triggerGroupCD = timeBetweenTriggers;
+        }
     }
 
     // Update is called once per frame
@@ -37,3 +51,4 @@ public class FullAutomaticTrigger : Trigger
         }
     }
 }
+
