@@ -22,11 +22,11 @@ public class SemiAutomaticTrigger : Trigger
 
     private void Update()
     {
-        if (Input.GetButtonDown(buttonToPress) && nextShotIn <= 0 && (!triggerGroup || triggerGroup.TriggersActive) )
+        if (Input.GetButtonDown(buttonToPress) && nextShotIn <= 0 && (triggerGroup == null || triggerGroup.TriggersActive) )
         { 
             OnGettingTriggert?.Invoke();
             nextShotIn = timeBetweenTriggers;
-            if (triggerGroup)
+            if (triggerGroup != null)
             {
                 triggerGroup.SetCD(triggerGroupCD);
             }
