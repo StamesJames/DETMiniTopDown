@@ -51,6 +51,24 @@ public class PrefabPooler : ScriptableObject
         return returnObject;
     }
 
+    public GameObject GetObject(Vector2 targetPosition, Transform targetParent)
+    {
+        GameObject returnObject;
+        if (objects.Count == 0)
+        {
+            returnObject = Instantiate(pooledObject, targetPosition, Quaternion.identity);
+        }
+        else
+        {
+            returnObject = objects.Dequeue();
+        }
+        returnObject.transform.SetParent(targetParent);
+        returnObject.transform.position = targetPosition;
+        returnObject.transform.rotation = Quaternion.identity;
+        returnObject.SetActive(true);
+        return returnObject;
+    }
+
     public void PoolObject(GameObject targetObject)
     {
         targetObject.SetActive(false);

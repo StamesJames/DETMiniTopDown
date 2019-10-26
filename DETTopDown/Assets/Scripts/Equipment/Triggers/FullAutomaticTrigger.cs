@@ -36,7 +36,7 @@ public class FullAutomaticTrigger : Trigger
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown(buttonToPress) && nextShotIn <= 0 && ( !triggerGroup || triggerGroup.TriggersActive ))
+        if (Input.GetButton(buttonToPress) && nextShotIn <= 0 && ( !triggerGroup || triggerGroup.TriggersActive ))
         {
             OnGettingTriggert?.Invoke();
             nextShotIn = timeBetweenTriggers;
