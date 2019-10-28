@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GraplingHook : Gadget
+public class GraplingHook : TriggerEffect
 {
     [SerializeField] float maxLeangth;
     [SerializeField] float pullSpeed;
@@ -10,35 +10,61 @@ public class GraplingHook : Gadget
     [SerializeField] float stopDistance;
     [SerializeField] LineRenderer chain;
     [SerializeField] Hook hook;
-    [SerializeField] Transform aimTransform;
     [SerializeField] Transform shotSpawn;
 
     PlayerMovement playerMovement;
     HOOKSTATE state = HOOKSTATE.INAKTIVE;
 
     delegate void HookAction();
-    HookAction hookAction;
+    HookAction hookTriggerAction;
+    HookAction hookUpdateAction;
 
     private void Awake()
     {
         playerMovement = transform.root.GetComponent<PlayerMovement>();
         hook.Speed = shootSpeed;
-        hookAction = Inaktive;
+        hookTriggerAction = InaktiveTrigger;
     }
 
-    void Inaktive()
+    private void Update()
     {
-        if (Input.GetButtonDown("Fire2")) Trigger();
+        hookUpdateAction?.Invoke();
     }
 
-    void Shooting()
+    protected override void Trigger()
+    {
+        hookTriggerAction?.Invoke();
+    }
+
+    void InaktiveTrigger()
+    {
+        Shoot();
+    }
+
+    void InaktiveUpdate()
+    {
+
+    }
+
+    void ShootingTrigger()
+    {
+
+    }
+
+    void ShootingUpdate()
     {
         if ((transform.position - hook.transform.position).magnitude > maxLeangth) StopShooting();
         UpdateChain();
     }
 
-    void Pulling()
+    void PullingTrigger()
     {
+        StopPulling();
+    }
+
+    void PullingUpdate()
+    {
+        playerMovement.MovePlayer((hook.transform.position - transform.position).normalized, pullSpeed);
         if ((hook.transform.position - transform.position).magnitude <= stopDistance)
         {
             StopPulling();
@@ -46,36 +72,10 @@ public class GraplingHook : Gadget
         UpdateChain();
     }
 
-    private void Update()
-    {
-        hookAction?.Invoke();
-        /*
-        if (state.Equals(HOOKSTATE.INAKTIVE))
-        {
-            if (Input.GetButtonDown("Fire2")) Trigger();
-            
-        }
-        else if (state.Equals(HOOKSTATE.SHOOTING))
-        {
-            if ((transform.position - hook.transform.position).magnitude > maxLeangth) StopShooting();
-            UpdateChain();   
-        }
-        else if (state.Equals(HOOKSTATE.PULLING))
-        {
-            if ((hook.transform.position - transform.position).magnitude <= stopDistance)
-            {
-                StopPulling();
-            }
-            UpdateChain();
-        }
-        */
-        AimWeapon.Instance.Aim(aimTransform);
-    }
-
     void UpdateChain()
     {
-        chain.SetPosition(0, transform.position + Vector3.forward * -5);
-        chain.SetPosition(1, hook.transform.position + Vector3.forward * -5);
+        chain.SetPosition(0, transform.position);
+        chain.SetPosition(1, hook.transform.position);
     }
 
     void StopPulling()
@@ -84,7 +84,8 @@ public class GraplingHook : Gadget
         playerMovement.InputActive = true;
         hook.gameObject.SetActive(false);
         chain.gameObject.SetActive(false);
-        hookAction = Inaktive;
+        hookTriggerAction = InaktiveTrigger;
+        hookUpdateAction = InaktiveUpdate;
         state = HOOKSTATE.INAKTIVE;
     }
 
@@ -94,20 +95,23 @@ public class GraplingHook : Gadget
         playerMovement.InputActive = true;
         hook.gameObject.SetActive(false);
         chain.gameObject.SetActive(false);
-        hookAction = Inaktive;
+        hookTriggerAction = InaktiveTrigger;
+        hookUpdateAction = InaktiveUpdate;
         state = HOOKSTATE.INAKTIVE;
     }
 
-    public override void Trigger()
+
+
+    void Shoot()
     {
         hook.transform.position = shotSpawn.position;
         hook.transform.rotation = shotSpawn.rotation;
-        hook.transform.SetParent(transform);
+        hook.transform.SetParent(null);
+        UpdateChain();
         chain.gameObject.SetActive(true);
         hook.gameObject.SetActive(true);
-        chain.SetPosition(0, transform.position);
-        chain.SetPosition(1, hook.transform.position);
-        hookAction = Shooting;
+        hookTriggerAction = ShootingTrigger;
+        hookUpdateAction = ShootingUpdate;
         state = HOOKSTATE.SHOOTING;
     }
 
@@ -116,7 +120,8 @@ public class GraplingHook : Gadget
         Debug.Log("Hook Hit");
         playerMovement.InputActive = false;
         playerMovement.MovePlayer((hook.transform.position - transform.position).normalized, pullSpeed);
-        hookAction = Pulling;
+        hookTriggerAction = PullingTrigger;
+        hookUpdateAction = PullingUpdate;
         state = HOOKSTATE.PULLING;
     }
 
