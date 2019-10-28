@@ -5,11 +5,14 @@ using UnityEngine;
 public class SetAnimationTrigger : TriggerEffect
 {
     [SerializeField] Animator animator;
-    [SerializeField] string triggerName;
+    [SerializeField] string[] triggerNames;
 
     protected override void Trigger()
     {
-        animator.SetTrigger(triggerName);
+        foreach (string triggerName in triggerNames)
+        {
+            animator.SetTrigger(triggerName);
+        }
     }
 
 }
