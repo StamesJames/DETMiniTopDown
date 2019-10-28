@@ -6,6 +6,7 @@ public class Hook : MonoBehaviour
 {
 
     [SerializeField] GraplingHook hookParent;
+    [SerializeField] LayerMask whatToHit;
 
     float speed = 30f;
     Rigidbody2D rb;
@@ -24,9 +25,7 @@ public class Hook : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Collided with: " + collision.gameObject.name);
-
-        if (!collision.CompareTag("Player"))
+        if ( ( (1 << collision.gameObject.layer) & whatToHit ) > 0 )
         {
             transform.SetParent(collision.transform);
             rb.velocity = Vector2.zero;
