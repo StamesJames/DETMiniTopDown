@@ -14,17 +14,21 @@ public class ExplosionTriggerEffect : TriggerEffect
 
     protected override void Trigger()
     {
+        Collider2D myCollider = GetComponent<Collider2D>();
+
         explosionEffect.GetObject(this.transform);
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius, explosionWhatToHit);
         foreach (Collider2D hit in hits)
         {
             IDamageable target = hit.GetComponent<IDamageable>();
-            if (target != null && hit.gameObject != transform.root)
+            if (target != null && !hit.Equals(myCollider))
             {
                 target.GetPushed((hit.transform.position - this.transform.position).normalized, explosionForce, pushBackTime);
                 target.GetDamaged(explosionDamage, damageType);                   
             }               
         } 
+
+        Destroy(this.gameObject);
     }
 
     private void OnDrawGizmosSelected()
