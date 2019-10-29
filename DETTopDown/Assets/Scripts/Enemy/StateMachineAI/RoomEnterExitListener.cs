@@ -5,7 +5,7 @@ using UnityEngine;
 public class RoomEnterExitListener : MonoBehaviour
 {
     [SerializeField] RoomEnterExitTrigger roomToListenTo;
-    [SerializeField] int triggerIndex;
+    [SerializeField] int[] triggerIndexs;
 
     AIController aiController;
 
@@ -30,14 +30,20 @@ public class RoomEnterExitListener : MonoBehaviour
 
     void OnPlayerEnters(GameObject player)
     {
-        aiController.SetTarget(player);
-        aiController.Trigger(triggerIndex);
+        foreach (int triggerIndex in triggerIndexs)
+        {
+            aiController.SetTarget(player);
+            aiController.Trigger(triggerIndex);
+        }
     }
 
     void OnPlayerExits(GameObject player)
     {
-        aiController.RemoveTarget(player);
-        aiController.Trigger(triggerIndex);
+        foreach (int triggerIndex in triggerIndexs)
+        {
+            aiController.SetTarget(player);
+            aiController.Trigger(triggerIndex);
+        }
 
     }
 }
