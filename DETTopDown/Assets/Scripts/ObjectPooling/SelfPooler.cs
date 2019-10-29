@@ -6,8 +6,24 @@ public class SelfPooler : MonoBehaviour
 {
 
     [SerializeField] PrefabPooler projectilePool;
+    bool poolIt;
+
+    private void OnEnable()
+    {
+        poolIt = false;
+    }
+
     public void PoolMe()
     {
-        projectilePool.PoolObject(this.gameObject);
+        poolIt = true;
     }
+
+    private void LateUpdate()
+    {
+        if (poolIt)
+        {
+            projectilePool.PoolObject(this.gameObject);
+        }
+    }
+
 }

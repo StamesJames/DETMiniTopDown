@@ -19,4 +19,16 @@ public class SingleDamageInflictor : MonoBehaviour
             }
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (((1 << collision.gameObject.layer) & whatToHit) > 0)
+        {
+            IDamageable target = collision.collider.GetComponent<IDamageable>();
+            if (target != null)
+            {
+                target.GetDamaged(20, damagetype);
+            }
+        }
+    }
 }

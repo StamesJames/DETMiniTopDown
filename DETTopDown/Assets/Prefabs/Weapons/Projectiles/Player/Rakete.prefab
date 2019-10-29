@@ -139,7 +139,7 @@ MonoBehaviour:
   damage: 20
   whatToHit:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 9216
 --- !u!114 &645691387324836815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whatToHit:
     serializedVersion: 2
-    m_Bits: 1280
+    m_Bits: 9472
   pooler: {fileID: 11400000, guid: 55ca8685b8b12da4e9a81e741447cde2, type: 2}
 --- !u!114 &8198502975561051731
 MonoBehaviour:
@@ -184,10 +184,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whatToHit:
     serializedVersion: 2
-    m_Bits: 1280
+    m_Bits: 9472
   explosionWhatToHit:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 9216
   explosionRadius: 2
   explosionDamage: 30
   explosionForce: 1000
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionWhatToHit:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 9216
   explosionRadius: 2
   explosionDamage: 30
   explosionForce: 100

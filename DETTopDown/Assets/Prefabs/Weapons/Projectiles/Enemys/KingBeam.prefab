@@ -117,6 +117,8 @@ GameObject:
   - component: {fileID: 7786488379457940694}
   - component: {fileID: 3703802313573820785}
   - component: {fileID: 9174626915906207365}
+  - component: {fileID: -5968678236349202557}
+  - component: {fileID: 8718247299606043480}
   m_Layer: 11
   m_Name: KingBeam
   m_TagString: Untagged
@@ -155,7 +157,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 45ede78c0cd4e12458e75c848867c211, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -172,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e73f6fd3e642b524aa656e0311c33b35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 8
 --- !u!114 &1621703090823866965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,7 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whatToHit:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 512
   pooler: {fileID: 11400000, guid: 07731f183a338434aa385175fe819df6, type: 2}
 --- !u!114 &3703802313573820785
 MonoBehaviour:
@@ -251,3 +253,32 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.38910565
+--- !u!114 &-5968678236349202557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3585154132585771676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7d059eea22f98f4e9fb4567222900d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxCollisions: 3
+  whatToHit:
+    serializedVersion: 2
+    m_Bits: 1280
+--- !u!114 &8718247299606043480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3585154132585771676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcddec6b8b5b055408d7f883b3cd7df0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePool: {fileID: 11400000, guid: 07731f183a338434aa385175fe819df6, type: 2}

@@ -15487,7 +15487,7 @@ GameObject:
   - component: {fileID: 1527697471}
   - component: {fileID: 1527697474}
   - component: {fileID: 1527697475}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: explosiveBarrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15585,7 +15585,7 @@ MonoBehaviour:
   explosionWhatToHit:
     serializedVersion: 2
     m_Bits: 1536
-  explosionRadius: 3
+  explosionRadius: 2.64
   explosionDamage: 10
   explosionForce: 100
   pushBackTime: 1
@@ -17154,6 +17154,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1347452209405191464, guid: 0c4b7a597354b1944aca2783067fbcfb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1347452209082016179, guid: 0c4b7a597354b1944aca2783067fbcfb,
+        type: 3}
+      propertyPath: whatToHit.m_Bits
+      value: 9472
+      objectReference: {fileID: 0}
+    - target: {fileID: 1347452210612756358, guid: 0c4b7a597354b1944aca2783067fbcfb,
+        type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 9472
+      objectReference: {fileID: 0}
+    - target: {fileID: 1347452210612756352, guid: 0c4b7a597354b1944aca2783067fbcfb,
+        type: 3}
+      propertyPath: whatToHit.m_Bits
+      value: 9216
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c4b7a597354b1944aca2783067fbcfb, type: 3}

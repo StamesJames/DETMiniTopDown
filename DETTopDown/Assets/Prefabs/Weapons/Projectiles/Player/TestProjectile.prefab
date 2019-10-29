@@ -104,7 +104,7 @@ MonoBehaviour:
   damage: 20
   whatToHit:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 9216
 --- !u!114 &2719411303418540215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whatToHit:
     serializedVersion: 2
-    m_Bits: 1280
+    m_Bits: 9472
   pooler: {fileID: 11400000, guid: b034c2c4deb76e3468b9591df5d6f704, type: 2}
 --- !u!114 &6737763777609487085
 MonoBehaviour:
