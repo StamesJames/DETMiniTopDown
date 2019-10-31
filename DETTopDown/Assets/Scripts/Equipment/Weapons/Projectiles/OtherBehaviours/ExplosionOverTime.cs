@@ -9,9 +9,21 @@ public class ExplosionOverTime : MonoBehaviour
     [SerializeField] float explosionDamage;
     [SerializeField] float explosionForce;
     [SerializeField] float explosionTime;
+    [SerializeField] bool randomizeTime = false;
+    [SerializeField] float randomRange;
     [SerializeField] float pushBackTime = 1f;
     [SerializeField] DAMAGETYPE damageType;
     [SerializeField] PrefabPooler explosionEffect;
+    [SerializeField] bool destroy = true;
+    [SerializeField] int destroyAfterExplosionCount = 1;
+
+    int currentExplosionCount;
+    SelfPooler selfPooler;
+
+    private void Awake()
+    {
+        selfPooler = GetComponent<SelfPooler>();
+    }
 
     private void OnDrawGizmosSelected()
     {
@@ -21,7 +33,8 @@ public class ExplosionOverTime : MonoBehaviour
 
     private void OnEnable()
     {
-        Invoke("Explosion", explosionTime);
+        currentExplosionCount = 0;
+        Invoke("Explosion", explosionTime + ( randomizeTime ? Random.Range(-randomRange, randomRange) : 0 ) );
     }
 
     private void OnDisable()
@@ -31,6 +44,7 @@ public class ExplosionOverTime : MonoBehaviour
 
     private void Explosion()
     {
+        currentExplosionCount++;
         explosionEffect.GetObject(this.transform);
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius, explosionWhatToHit);
         foreach (Collider2D hit in hits)
@@ -41,6 +55,10 @@ public class ExplosionOverTime : MonoBehaviour
                 target.GetPushed((hit.transform.position - this.transform.position).normalized, explosionForce,pushBackTime);
                 target.GetDamaged(explosionDamage, damageType);
             }
-        }       
+        }
+        if (currentExplosionCount >= destroyAfterExplosionCount && destroy)
+        {
+            selfPooler.PoolMe();
+        }
     }
 }
