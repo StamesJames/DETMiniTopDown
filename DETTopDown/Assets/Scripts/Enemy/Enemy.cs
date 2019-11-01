@@ -6,6 +6,7 @@ using Pathfinding;
 
 public class Enemy : MonoBehaviour, IDamageable, IEffektGiveable, IStatusEffectable
 {
+    [SerializeField] string name;
     [SerializeField] PrefabPooler particlePool;
     [SerializeField] float startHealth;
     [Header("UI Stuff")]
@@ -13,6 +14,10 @@ public class Enemy : MonoBehaviour, IDamageable, IEffektGiveable, IStatusEffecta
     float lifetotal;
 
     Rigidbody2D rb;
+
+    public delegate void OnEnemyDeath(string name);
+    public static event OnEnemyDeath onEnemyDeath;
+
 
     // Status Effect Kram
     List<StatusEffect> statusEffects = new List<StatusEffect>();
@@ -57,6 +62,7 @@ public class Enemy : MonoBehaviour, IDamageable, IEffektGiveable, IStatusEffecta
     }
 
     public void DestroyMe(){
+        onEnemyDeath?.Invoke(name);
         Destroy(gameObject);
     }
 

@@ -24,8 +24,7 @@ public class CastingMultipleRandomRays : TriggerEffect
     private void Awake()
     {
         lineRendererClones = new LineRenderer[count];
-        lineRendererClones[0] = lineRenderer;
-        for (int i = 1; i < lineRendererClones.Length; i++)
+        for (int i = 0; i < lineRendererClones.Length; i++)
         {
             lineRendererClones[i] = Instantiate(lineRenderer);
         }
@@ -40,7 +39,7 @@ public class CastingMultipleRandomRays : TriggerEffect
             {
                 for (int i = 0; i < count; i++)
                 {
-                    Vector2 randomDir = RotateVector2.Rotate(startTransform.right, Random.Range(-randomRange, randomRange));
+                    Vector2 randomDir = RotateVector2.Rotate(startTransform.right, Random.Range(-randomRange / 2, randomRange / 2) + Random.Range(-randomRange / 2, randomRange / 2));
                     RaycastHit2D[] hits = Physics2D.RaycastAll(startTransform.position, randomDir, distance, whatToHit);
                     foreach (RaycastHit2D hit in hits)
                     {
@@ -65,7 +64,7 @@ public class CastingMultipleRandomRays : TriggerEffect
             {
                 for (int i = 0; i < count; i++)
                 {
-                    Vector2 randomDir = RotateVector2.Rotate(startTransform.right, Random.Range(-randomRange, randomRange));
+                    Vector2 randomDir = RotateVector2.Rotate(startTransform.right, Random.Range(-randomRange / 2, randomRange / 2) + Random.Range(-randomRange / 2, randomRange / 2));
                     RaycastHit2D hit = Physics2D.Raycast(startTransform.position, randomDir, distance, whatToHit);
                     if (hit)
                     {

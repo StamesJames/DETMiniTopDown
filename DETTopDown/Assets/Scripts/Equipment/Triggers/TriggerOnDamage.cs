@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class TriggerOnDamage : Trigger, IDamageable
 {
-
     public override event GetTriggert OnGettingTriggert;
 
     public void GetDamaged(float dmg, DAMAGETYPE type)
     {
-        if(dmg > 0){
+        if(dmg > 0 ){
             OnGettingTriggert?.Invoke();
         }
     }

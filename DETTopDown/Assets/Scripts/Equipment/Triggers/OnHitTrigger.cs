@@ -12,7 +12,6 @@ public class OnHitTrigger : Trigger
     public Collider2D ColliderTriggert { get => colliderTriggert; set => colliderTriggert = value; }
 
     public override event GetTriggert OnGettingTriggert;
-    public event GetTriggert OnExit;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -29,7 +28,7 @@ public class OnHitTrigger : Trigger
         {
             if (((1 << collision.gameObject.layer) & whichHitTriggers) > 0)
             {
-                OnExit?.Invoke();
+                OnGettingTriggert?.Invoke();
             }
         }
     }
@@ -48,7 +47,7 @@ public class OnHitTrigger : Trigger
         {
             if (((1 << collision.gameObject.layer) & whichHitTriggers) > 0)
             {
-                OnExit?.Invoke();
+                OnGettingTriggert?.Invoke();
             }
         }
     }

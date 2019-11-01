@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosionTriggerEffect : TriggerEffect
+public class ExpolosiveBarrel : TriggerEffect
 {
     [SerializeField] LayerMask explosionWhatToHit;
     [SerializeField] float explosionRadius;
@@ -11,15 +11,37 @@ public class ExplosionTriggerEffect : TriggerEffect
     [SerializeField] float pushBackTime = 1f;
     [SerializeField] DAMAGETYPE damageType;
     [SerializeField] PrefabPooler explosionEffect;
+    [SerializeField] float timeToExplode;
+    [SerializeField] string animationBool;
 
     IDamageable myDamageable;
+    Animator anim;
 
     private void Awake()
     {
+        anim = GetComponent<Animator>();
         myDamageable = GetComponent<IDamageable>();
     }
 
+    bool goingToExplode = false;
+
     protected override void Trigger()
+    {
+        if (!goingToExplode)
+        {
+            goingToExplode = true;
+            anim.SetBool(animationBool, true);
+            Invoke("Explosion", timeToExplode);
+        }
+    }
+
+    private new void OnDisable()
+    {
+        base.OnDisable();
+        CancelInvoke();
+    }
+
+    void Explosion()
     {
         Collider2D myCollider = GetComponent<Collider2D>();
 
@@ -31,9 +53,9 @@ public class ExplosionTriggerEffect : TriggerEffect
             if (target != null && target != myDamageable)
             {
                 target.GetPushed((hit.transform.position - this.transform.position).normalized, explosionForce, pushBackTime);
-                target.GetDamaged(explosionDamage, damageType);                   
-            }               
-        } 
+                target.GetDamaged(explosionDamage, damageType);
+            }
+        }
 
         Destroy(this.gameObject);
     }

@@ -88,6 +88,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  randomize: 0
+  randomRange: 2
 --- !u!114 &7252998848876211541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,7 +121,7 @@ MonoBehaviour:
   damage: 20
   whatToHit:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 8704
 --- !u!114 &2173426303362722774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,7 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whatToHit:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 8960
   pooler: {fileID: 11400000, guid: 98718c224185e03428d550dd0ab22a4a, type: 2}
 --- !u!114 &4701805069706112625
 MonoBehaviour:

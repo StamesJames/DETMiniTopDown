@@ -44,6 +44,5 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IEffektGiveable
     public void GetPushed(Vector2 direction, float force, float time)
     {
         Debug.LogError("Player GetPushed Not Implementet");
-        throw new System.NotImplementedException();
     }
 }
