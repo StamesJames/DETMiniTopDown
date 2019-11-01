@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
+        LoadEnemyKillCount();
     }
     
     void CountEnemyDeath(string enemyName)
@@ -32,10 +33,21 @@ public class GameManager : MonoBehaviour
     }
 
     public void SaveEnemyKillCount() {
-        XmlSerializer serializer = new XmlSerializer(typeof(List<KeyValuePair<string, int>>));
+        XmlSerializer serializer = new XmlSerializer(typeof(List<CountContainerItem>));
         Directory.CreateDirectory(Application.dataPath + "/SaveFiles/XML/");
         FileStream stream = new FileStream(Application.dataPath + "/SaveFiles/XML/saveFile.xml", FileMode.Create);
         serializer.Serialize(stream, enemyKilledCounter.ToList());
         stream.Close();
+    }
+
+    public void LoadEnemyKillCount()
+    {
+        XmlSerializer serializer = new XmlSerializer(typeof(List<CountContainerItem>));
+        FileStream stream = new FileStream(Application.dataPath + "/SaveFiles/XML/saveFile.xml", FileMode.Open);
+        List<CountContainerItem> tempList = serializer.Deserialize(stream) as List<CountContainerItem>;
+        enemyKilledCounter = new CountContainer(tempList);
+
+        stream.Close();
+
     }
 }

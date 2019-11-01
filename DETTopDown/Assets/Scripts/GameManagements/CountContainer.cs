@@ -19,12 +19,25 @@ public class CountContainer
         }    
     }
 
-    public List<KeyValuePair<string, int>> ToList()
+    public CountContainer()
     {
-        List<KeyValuePair<string, int>> templist = new List<KeyValuePair<string, int>>();
+
+    }
+
+    public CountContainer(List<CountContainerItem> items)
+    {
+        foreach (CountContainerItem item in items)
+        {
+            container[item.key] = item.value;
+        }
+    }
+
+    public List<CountContainerItem> ToList()
+    {
+        List<CountContainerItem> templist = new List<CountContainerItem>();
         foreach ( KeyValuePair<string,int> entry in container)
         {
-            templist.Add(entry);
+            templist.Add(new CountContainerItem() { key = entry.Key, value = entry.Value });
         }
         return templist;
     }
@@ -54,8 +67,9 @@ public class CountContainer
     }
 }
 
+[System.Serializable]
 public class CountContainerItem
 {
-    string key;
-    int value;
+    public string key;
+    public int value;
 }

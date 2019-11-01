@@ -94,7 +94,19 @@ public class Enemy : MonoBehaviour, IDamageable, IEffektGiveable, IStatusEffecta
 
     public void AddStatusEffect(StatusEffect effect)
     {
-        statusEffects.Add(effect);
+        bool temp = true;
+
+        foreach (StatusEffect currentEffect in statusEffects)
+        {
+            if (!effect.InteractWithOtherEffect(currentEffect.Name))
+            {
+                temp = false;
+            }
+        }
+        if (temp)
+        {
+            statusEffects.Add(effect);
+        }
     }
 
     public void RemoveStatusEffect(StatusEffect effect)
