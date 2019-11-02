@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using EZCameraShake;
 
 public class PlayerHealth : MonoBehaviour, IDamageable, IEffektGiveable
 {
+    public delegate void OnPlayerDeath(PlayerInformation information);
+
+    public static event OnPlayerDeath onPlayerDeath;
+
     [SerializeField] Color startColor;
     [SerializeField] Color endColor;
 
@@ -13,6 +18,15 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IEffektGiveable
     [SerializeField] PrefabPooler damageEffect;
     [SerializeField] Image healthBar;
     [SerializeField] TextMeshProUGUI healthText;
+    [Header("Sounds")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip hurtClip;
+    [Header("Hurt CameraShake")]
+    [SerializeField] float hurtShakeAmplitude;
+    [SerializeField] float hurtShakeRoughness;
+    [SerializeField] float hurtShakeFadeIn;
+    [SerializeField] float hurtShakeFadeout;
+
     float currentHealth;
 
 
@@ -29,11 +43,19 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IEffektGiveable
         healthText.SetText(currentHealth.ToString());
         healthBar.fillAmount = currentHealth / startHealth;
         healthBar.color = Color.Lerp(endColor, startColor, currentHealth / startHealth);
+        audioSource.PlayOneShot(hurtClip);
 
+        CameraShaker.Instance.ShakeOnce(hurtShakeAmplitude, hurtShakeRoughness, hurtShakeFadeIn, hurtShakeFadeout);
 
         if(currentHealth <= 0){
             Destroy(gameObject);
         }
+    }
+
+    void PlayerDath()
+    {
+        onPlayerDeath?.Invoke(new PlayerInformation { PlayerName = "Player_1" });
+        Destroy(gameObject);
     }
 
     public PrefabPooler GetDamageEffect()
@@ -43,6 +65,13 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IEffektGiveable
 
     public void GetPushed(Vector2 direction, float force, float time)
     {
-        Debug.LogError("Player GetPushed Not Implementet");
+
     }
+}
+
+public class PlayerInformation
+{
+    string playerName;
+
+    public string PlayerName { get => playerName; set => playerName = value; }
 }

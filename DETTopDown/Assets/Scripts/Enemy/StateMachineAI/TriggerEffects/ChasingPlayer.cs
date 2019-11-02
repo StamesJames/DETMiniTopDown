@@ -54,7 +54,6 @@ public class ChasingPlayer : TriggerEffect
     {
             Vector3 connectionVec = aiController.CurrentTarget.transform.position - transform.position;
             RaycastHit2D lineHit = Physics2D.CircleCast(transform.position, 0.3f, connectionVec.normalized, connectionVec.magnitude, whatIsObstacle);
-            Debug.Log("Found " + lineHit.collider.gameObject.name + " in the way");
             if (lineHit && lineHit.collider.gameObject == aiController.CurrentTarget.gameObject)
             {
                 path.endReachedDistance = stopDistance;
@@ -98,7 +97,6 @@ public class ChasingPlayer : TriggerEffect
 
     protected override void Trigger()
     {
-        Debug.Log("Got Triggert");
         stateTrigger?.Invoke();
     }
 }

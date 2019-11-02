@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Xml;
+using System.Xml.Serialization;
+using System.IO;
 
 [System.Serializable]
 public class CountContainer
@@ -22,6 +25,25 @@ public class CountContainer
     public CountContainer()
     {
 
+    }
+
+    public CountContainer(string path)
+    {
+        if (File.Exists(path))
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<CountContainerItem>));
+            FileStream stream = new FileStream(path, FileMode.Open);
+            List<CountContainerItem> tempList = serializer.Deserialize(stream) as List<CountContainerItem>;
+            foreach (CountContainerItem item in tempList)
+            {
+                container[item.key] = item.value;
+            }
+            stream.Close();
+        }
+        else
+        {
+
+        }
     }
 
     public CountContainer(List<CountContainerItem> items)
@@ -65,6 +87,16 @@ public class CountContainer
             container[name] = 1;
         }
     }
+
+    public void Serialize(string path)
+    {
+        XmlSerializer serializer = new XmlSerializer(typeof(List<CountContainerItem>));
+        Directory.CreateDirectory(Path.GetDirectoryName(path));
+        FileStream stream = new FileStream(path, FileMode.Create);
+        serializer.Serialize(stream, this.ToList());
+        stream.Close();
+    }
+
 }
 
 [System.Serializable]

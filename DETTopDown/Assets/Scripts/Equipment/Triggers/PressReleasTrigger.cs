@@ -17,7 +17,10 @@ public class PressReleasTrigger : Trigger
     {
         if (Input.GetButtonDown(buttonToPressAndReleas))
         {
-            OnGettingTriggert?.Invoke();
+            if (triggerGroup && triggerGroup.TriggersActive)
+            {
+                OnGettingTriggert?.Invoke();
+            }
             if (triggerGroup)
             {
                 triggerGroup.TriggersActive = !inverted;

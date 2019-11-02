@@ -9,6 +9,19 @@ public class RoomEnterExitListener : MonoBehaviour
 
     AIController aiController;
 
+    public RoomEnterExitTrigger RoomToListenTo { get => roomToListenTo;
+        set {
+            if (roomToListenTo != null)
+            {
+                roomToListenTo.onPlayerEnterRoom -= OnPlayerEnters;
+                roomToListenTo.onPlayerExitRoom -= OnPlayerExits;
+            }
+            roomToListenTo = value;
+            roomToListenTo.onPlayerEnterRoom += OnPlayerEnters;
+            roomToListenTo.onPlayerExitRoom += OnPlayerExits;
+        }
+    }
+
     private void Awake()
     {
         aiController = GetComponent<AIController>();
@@ -16,17 +29,21 @@ public class RoomEnterExitListener : MonoBehaviour
 
     private void OnEnable()
     {
-        roomToListenTo.onPlayerEnterRoom += OnPlayerEnters;
-        roomToListenTo.onPlayerExitRoom += OnPlayerExits;
+        if (roomToListenTo)
+        {
+            roomToListenTo.onPlayerEnterRoom += OnPlayerEnters;
+            roomToListenTo.onPlayerExitRoom += OnPlayerExits;
+        }
     }
 
     private void OnDisable()
     {
-        roomToListenTo.onPlayerEnterRoom -= OnPlayerEnters;
-        roomToListenTo.onPlayerExitRoom -= OnPlayerExits;
+        if (roomToListenTo)
+        {
+            roomToListenTo.onPlayerEnterRoom -= OnPlayerEnters;
+            roomToListenTo.onPlayerExitRoom -= OnPlayerExits;
+        }
     }
-
-
 
     void OnPlayerEnters(GameObject player)
     {

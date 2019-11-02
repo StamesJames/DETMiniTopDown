@@ -11,6 +11,7 @@ public class ExplosionTriggerEffect : TriggerEffect
     [SerializeField] float pushBackTime = 1f;
     [SerializeField] DAMAGETYPE damageType;
     [SerializeField] PrefabPooler explosionEffect;
+    [SerializeField] bool destoryThis = true;
 
     IDamageable myDamageable;
 
@@ -33,9 +34,12 @@ public class ExplosionTriggerEffect : TriggerEffect
                 target.GetPushed((hit.transform.position - this.transform.position).normalized, explosionForce, pushBackTime);
                 target.GetDamaged(explosionDamage, damageType);                   
             }               
-        } 
+        }
 
-        Destroy(this.gameObject);
+        if (destoryThis)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnDrawGizmosSelected()

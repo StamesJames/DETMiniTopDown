@@ -17,7 +17,7 @@ public class StraightLinear : FlightType
 
     private void OnEnable()
     {
-        rb.velocity = transform.right * (Speed + Random.Range(-randomRange, randomRange));
+        rb.velocity = transform.right * (Speed + (randomize ? Random.Range(-randomRange, randomRange) : 0 ));
     }
 
 }

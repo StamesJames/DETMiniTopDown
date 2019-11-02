@@ -10,10 +10,15 @@ public class RoomEnterExitTrigger : MonoBehaviour
     public event OnPlayerEnterRoom onPlayerEnterRoom;
     public event OnPlayerEnterRoom onPlayerExitRoom;
 
+    bool playerIsInRoom = false;
+
+    public bool PlayerIsInRoom { get => playerIsInRoom; set => playerIsInRoom = value; }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag.Equals("Player"))
         {
+            playerIsInRoom = true;
             onPlayerEnterRoom?.Invoke(collision.gameObject);
         }
     }
@@ -22,6 +27,7 @@ public class RoomEnterExitTrigger : MonoBehaviour
     {
         if (collision.tag.Equals("Player"))
         {
+            playerIsInRoom = true;
             onPlayerExitRoom?.Invoke(collision.gameObject);
         }
     }

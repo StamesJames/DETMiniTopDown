@@ -6,18 +6,22 @@ using Pathfinding;
 
 public class Enemy : MonoBehaviour, IDamageable, IEffektGiveable, IStatusEffectable
 {
-    [SerializeField] string name;
+    [SerializeField] string enemyName;
+    [SerializeField] int points;
     [SerializeField] PrefabPooler particlePool;
     [SerializeField] float startHealth;
     [Header("UI Stuff")]
     [SerializeField] Image healthBar;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip hurtSound;
     float lifetotal;
 
     Rigidbody2D rb;
 
-    public delegate void OnEnemyDeath(string name);
+    public delegate void OnEnemyDeath(EnemyInformations informations);
     public static event OnEnemyDeath onEnemyDeath;
 
+    public event OnEnemyDeath onMyDeath;
 
     // Status Effect Kram
     List<StatusEffect> statusEffects = new List<StatusEffect>();
@@ -49,6 +53,8 @@ public class Enemy : MonoBehaviour, IDamageable, IEffektGiveable, IStatusEffecta
         Debug.Log("hab dmg bekommen : "+ dmg + type);
         lifetotal -= dmg;
 
+        audioSource.PlayOneShot(hurtSound);
+
         healthBar.fillAmount = lifetotal/startHealth;
 
         if(lifetotal <= 0){
@@ -62,7 +68,8 @@ public class Enemy : MonoBehaviour, IDamageable, IEffektGiveable, IStatusEffecta
     }
 
     public void DestroyMe(){
-        onEnemyDeath?.Invoke(name);
+        onMyDeath?.Invoke(new EnemyInformations { Name = enemyName, Points = points });
+        onEnemyDeath?.Invoke(new EnemyInformations { Name = enemyName, Points = points });
         Destroy(gameObject);
     }
 
@@ -123,4 +130,13 @@ public class Enemy : MonoBehaviour, IDamageable, IEffektGiveable, IStatusEffecta
     {
         onTickEvent -= onTick;
     }
+}
+
+public class EnemyInformations
+{
+    string name;
+    int points;
+
+    public string Name { get => name; set => name = value; }
+    public int Points { get => points; set => points = value; }
 }

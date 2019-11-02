@@ -7,47 +7,60 @@ using System.IO;
 
 public class GameManager : MonoBehaviour
 {
-    CountContainer enemyKilledCounter = new CountContainer();
+    CountContainer playerGameStats = new CountContainer();
+
+    string saveFilePath;
+
+    static GameManager _instance;
+    public static GameManager Instance { get => _instance; }
 
     private void Awake()
     {
+        if (_instance != null)
+        {
+            Debug.Log("Es wurde ein GameManager zu viel erzeugt");
+            Destroy(this);
+            return;
+        }
+        _instance = this;
+        PlayerHealth.onPlayerDeath += CountPlayerDeath;
+        Enemy.onEnemyDeath += CountEnemyDeath;
+        saveFilePath = Application.dataPath + "/SaveFiles/XML/playerGameStatsSaveFile.xml";
         DontDestroyOnLoad(this.gameObject);
-        LoadEnemyKillCount();
+        playerGameStats = new CountContainer(saveFilePath);
+        StartCoroutine("SaveTime");
     }
     
-    void CountEnemyDeath(string enemyName)
+    void CountPlayerDeath(PlayerInformation information)
     {
-        enemyKilledCounter.increaseValue(enemyName);
-        SaveEnemyKillCount();
+        playerGameStats.increaseValue("PLAYER_DEATH");
     }
 
-    private void OnEnable()
+    void CountEnemyDeath(EnemyInformations enemyInformations)
     {
-        Enemy.onEnemyDeath += CountEnemyDeath;
+        playerGameStats.increaseValue(enemyInformations.Name.ToUpper() + "_KILLED");
+        playerGameStats.increaseValue("POINTS", enemyInformations.Points);
+        playerGameStats.Serialize(saveFilePath);
+    }
+
+    IEnumerator SaveTime()
+    {
+        while (true)
+        {
+            yield return (new WaitForSeconds(10));
+            playerGameStats.increaseValue("SECONDS_PLAYED", 10);
+            playerGameStats.Serialize(saveFilePath);
+        }
+    }
+
+    public int GetPlayerGameStat(string statName)
+    {
+        return playerGameStats.getInt(statName);
     }
 
     private void OnDisable()
     {
         Enemy.onEnemyDeath -= CountEnemyDeath;
-
-    }
-
-    public void SaveEnemyKillCount() {
-        XmlSerializer serializer = new XmlSerializer(typeof(List<CountContainerItem>));
-        Directory.CreateDirectory(Application.dataPath + "/SaveFiles/XML/");
-        FileStream stream = new FileStream(Application.dataPath + "/SaveFiles/XML/saveFile.xml", FileMode.Create);
-        serializer.Serialize(stream, enemyKilledCounter.ToList());
-        stream.Close();
-    }
-
-    public void LoadEnemyKillCount()
-    {
-        XmlSerializer serializer = new XmlSerializer(typeof(List<CountContainerItem>));
-        FileStream stream = new FileStream(Application.dataPath + "/SaveFiles/XML/saveFile.xml", FileMode.Open);
-        List<CountContainerItem> tempList = serializer.Deserialize(stream) as List<CountContainerItem>;
-        enemyKilledCounter = new CountContainer(tempList);
-
-        stream.Close();
 
     }
 }
