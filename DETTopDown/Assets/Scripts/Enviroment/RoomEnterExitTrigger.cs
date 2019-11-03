@@ -27,7 +27,7 @@ public class RoomEnterExitTrigger : MonoBehaviour
     {
         if (collision.tag.Equals("Player"))
         {
-            playerIsInRoom = true;
+            playerIsInRoom = false;
             onPlayerExitRoom?.Invoke(collision.gameObject);
         }
     }

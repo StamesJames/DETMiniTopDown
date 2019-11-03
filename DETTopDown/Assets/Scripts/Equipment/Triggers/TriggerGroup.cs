@@ -22,6 +22,7 @@ public class TriggerGroup : MonoBehaviour
         {
             if (currentCD <= 0)
             {
+                Debug.Log("TriggerGroup got activated");
                 triggersActive = true;
             }
             else if (currentCD > 0)

@@ -20,9 +20,6 @@ public class PressReleasTrigger : Trigger
             if (triggerGroup && triggerGroup.TriggersActive)
             {
                 OnGettingTriggert?.Invoke();
-            }
-            if (triggerGroup)
-            {
                 triggerGroup.TriggersActive = !inverted;
             }
         }

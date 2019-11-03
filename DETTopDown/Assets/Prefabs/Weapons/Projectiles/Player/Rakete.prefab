@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5271881225921383814}
   - component: {fileID: 3670239686551762450}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 8279798297036174165}
   - component: {fileID: 4107737725903666416}
   - component: {fileID: 3457072216643462049}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Rakete
   m_TagString: Untagged
   m_Icon: {fileID: 0}

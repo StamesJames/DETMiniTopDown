@@ -2,30 +2,34 @@
 <ArrayOfCountContainerItem xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <CountContainerItem>
     <key>SECONDS_PLAYED</key>
-    <value>1590</value>
+    <value>4920</value>
   </CountContainerItem>
   <CountContainerItem>
     <key>BRAINOMANCER_KILLED</key>
-    <value>10</value>
+    <value>20</value>
   </CountContainerItem>
   <CountContainerItem>
     <key>POINTS</key>
-    <value>1060</value>
+    <value>2705</value>
   </CountContainerItem>
   <CountContainerItem>
     <key>BRAINKING_KILLED</key>
-    <value>12</value>
+    <value>25</value>
   </CountContainerItem>
   <CountContainerItem>
     <key>BRAININITIATE_KILLED</key>
-    <value>26</value>
+    <value>61</value>
   </CountContainerItem>
   <CountContainerItem>
     <key>BRAININAJAR_KILLED</key>
-    <value>13</value>
+    <value>35</value>
   </CountContainerItem>
   <CountContainerItem>
     <key>_KILLED</key>
     <value>1</value>
+  </CountContainerItem>
+  <CountContainerItem>
+    <key>BRAINOBOSS_KILLED</key>
+    <value>4</value>
   </CountContainerItem>
 </ArrayOfCountContainerItem>

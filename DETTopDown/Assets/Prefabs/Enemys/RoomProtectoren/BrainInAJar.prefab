@@ -624,6 +624,7 @@ MonoBehaviour:
   healthBar: {fileID: 2230679796195874158}
   audioSource: {fileID: 628373633}
   hurtSound: {fileID: 8300000, guid: fee160c98f250e94f8f967057c5a67e2, type: 3}
+  graphics: {fileID: 5077617576581449629}
 --- !u!114 &2230679796197254012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1295,6 +1296,7 @@ MonoBehaviour:
   whatIsObstacle:
     serializedVersion: 2
     m_Bits: 768
+  randomRange: 0.2
 --- !u!1 &5077617578157020306
 GameObject:
   m_ObjectHideFlags: 0

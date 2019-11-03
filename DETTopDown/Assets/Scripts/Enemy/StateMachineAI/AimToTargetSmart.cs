@@ -16,7 +16,7 @@ public class AimToTargetSmart : MonoBehaviour
 
 
     void Awake(){
-        aiController = transform.root.GetComponent<AIController>();
+        aiController = GetComponentInParent<AIController>();
     }
 
     // Update is called once per frame

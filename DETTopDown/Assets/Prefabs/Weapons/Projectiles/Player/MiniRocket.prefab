@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 9219884289834115377}
   - component: {fileID: 4035421319290376488}
   - component: {fileID: 4872914790368149039}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MiniRocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ GameObject:
   m_Component:
   - component: {fileID: 488467996152545974}
   - component: {fileID: 5881354409026184421}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}

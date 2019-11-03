@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 8419798488238942824}
   m_Layer: 11
   m_Name: TestProjectile
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -88,6 +88,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
+  randomize: 0
+  randomRange: 2
 --- !u!114 &6159087115231891315
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6069785531334894340}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Disk2Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 6069785531788548732}
   - component: {fileID: 6069785531788548675}
   - component: {fileID: 6069785531788548674}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Disk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6069785531846486193}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Disk1Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 6069785532452426294}
   - component: {fileID: 6069785532452426295}
   - component: {fileID: 2157382613087802492}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SpinningDisks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,6 +331,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  randomize: 0
+  randomRange: 2
 --- !u!58 &2157382613087802492
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -358,7 +360,7 @@ GameObject:
   - component: {fileID: 6069785532617890889}
   - component: {fileID: 6069785532617890888}
   - component: {fileID: 6069785532617890895}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Disk
   m_TagString: Untagged
   m_Icon: {fileID: 0}

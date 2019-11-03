@@ -1265,6 +1265,7 @@ MonoBehaviour:
   healthBar: {fileID: 6021044501199481219}
   audioSource: {fileID: 1420544030}
   hurtSound: {fileID: 8300000, guid: ee1432ef6ec063e4c9e483d3ffdbbad4, type: 3}
+  graphics: {fileID: 796197251325098864}
 --- !u!114 &6021044501199413137
 MonoBehaviour:
   m_ObjectHideFlags: 0

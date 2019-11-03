@@ -7,13 +7,14 @@ public class AttackIfClear : TriggerEffect
     [SerializeField] string[] triggerNames;
     [SerializeField] float timeBetweenShots;
     [SerializeField] LayerMask whatIsObstacle;
+    [SerializeField] float randomRange = 0;
     bool active = false;
 
     AIController aiController;
     Transform currentTarget;
 
     void Awake(){
-        aiController = transform.root.GetComponent<AIController>();
+        aiController = GetComponentInParent<AIController>();
     }
 
     float nextShotIn;
@@ -29,7 +30,7 @@ public class AttackIfClear : TriggerEffect
                 {
                     aiController.Trigger(triggerName);
                 }
-                nextShotIn = timeBetweenShots;
+                nextShotIn = timeBetweenShots + Random.Range(-randomRange, randomRange);
             }
         }else if (nextShotIn > 0){
             nextShotIn -= Time.deltaTime;

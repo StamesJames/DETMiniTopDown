@@ -14,9 +14,12 @@ public class Enemy : MonoBehaviour, IDamageable, IEffektGiveable, IStatusEffecta
     [SerializeField] Image healthBar;
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip hurtSound;
+    [SerializeField] Transform graphics;
     float lifetotal;
 
     Rigidbody2D rb;
+
+    AIDestinationSetter setter;
 
     public delegate void OnEnemyDeath(EnemyInformations informations);
     public static event OnEnemyDeath onEnemyDeath;
@@ -32,6 +35,7 @@ public class Enemy : MonoBehaviour, IDamageable, IEffektGiveable, IStatusEffecta
     AIPath path;
 
     void Awake(){
+        setter = GetComponent<AIDestinationSetter>();
         rb = GetComponent<Rigidbody2D>();
         seeker = GetComponent<Seeker>();
         path = GetComponent<AIPath>();
@@ -45,6 +49,17 @@ public class Enemy : MonoBehaviour, IDamageable, IEffektGiveable, IStatusEffecta
 
     private void Update()
     {
+        if (setter.target != null)
+        {
+            if (setter.target.position.x < transform.position.x)
+            {
+                graphics.localScale = new Vector3(1, 1, 1);
+            }
+            else
+            {
+                graphics.localScale = new Vector3(-1, 1, 1);
+            }
+        }
         onTickEvent?.Invoke();
     }
 

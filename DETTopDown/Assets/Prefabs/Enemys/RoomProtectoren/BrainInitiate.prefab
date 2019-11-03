@@ -266,7 +266,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: B R A I N   I N   A   J A R
+  m_text: B R A I N I N I T I A T E
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -335,10 +335,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: -25.709663, w: 5.203151}
   m_textInfo:
     textComponent: {fileID: 724670645654970221}
-    characterCount: 27
+    characterCount: 25
     spriteCount: 0
-    spaceCount: 16
-    wordCount: 11
+    spaceCount: 12
+    wordCount: 13
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -579,6 +579,7 @@ MonoBehaviour:
   healthBar: {fileID: 724670645909077027}
   audioSource: {fileID: 1569622644}
   hurtSound: {fileID: 8300000, guid: ee1432ef6ec063e4c9e483d3ffdbbad4, type: 3}
+  graphics: {fileID: 5948455903498841808}
 --- !u!114 &724670645908998705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1328,6 +1329,7 @@ MonoBehaviour:
   whatIsObstacle:
     serializedVersion: 2
     m_Bits: 768
+  randomRange: 0
 --- !u!1 &5948455903498841811
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 776290c647aee90458699352c6d79ccf, type: 3}
-  m_Name: GreenHitSplash
+  m_Name: bigBossBeamPool
   m_EditorClassIdentifier: 
-  pooledObject: {fileID: 7908500304347896892, guid: 11904008fbdc02444a0daee959eb9440,
+  pooledObject: {fileID: 1026060183745446854, guid: 9340622075dfd81469b3d5e0751e21f6,
     type: 3}
