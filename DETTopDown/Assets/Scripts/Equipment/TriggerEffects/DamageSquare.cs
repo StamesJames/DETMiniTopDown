@@ -8,6 +8,9 @@ public class DamageSquare : TriggerEffect
     [SerializeField] LayerMask whatToHit;
     [SerializeField] float damage;
     [SerializeField] DAMAGETYPE damageType;
+    [SerializeField] int everyXTrigger = 1;
+
+    int currentTriggerCount = 0;
 
     private void OnDrawGizmos()
     {
@@ -16,15 +19,21 @@ public class DamageSquare : TriggerEffect
 
     protected override void Trigger()
     {
-        Collider2D[] hits = Physics2D.OverlapBoxAll(transform.position, new Vector2(howBig, howBig), 0, whatToHit);
-        foreach (Collider2D hit in hits)
+        if (currentTriggerCount == 0)
         {
-            IDamageable hitDamageable = hit.GetComponent<IDamageable>();
-            if (hitDamageable != null)
+            Collider2D[] hits = Physics2D.OverlapBoxAll(transform.position, new Vector2(howBig, howBig), 0, whatToHit);
+            foreach (Collider2D hit in hits)
             {
-                hitDamageable.GetDamaged(damage, damageType);
+                IDamageable hitDamageable = hit.GetComponent<IDamageable>();
+                if (hitDamageable != null)
+                {
+                    hitDamageable.GetDamaged(damage, damageType);
+                }
             }
         }
+
+        currentTriggerCount = (currentTriggerCount + 1) % everyXTrigger;
+
     }
 
 }

@@ -235,7 +235,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &796197252625627806
 Animator:
   serializedVersion: 3
@@ -343,7 +343,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -712,7 +712,10 @@ MonoBehaviour:
   triggerToListen: {fileID: 0}
   triggerNames:
   - SHOOT
-  timeBetweenShots: 1.5
+  timeBetweenShots: 2
+  whatIsObstacle:
+    serializedVersion: 2
+    m_Bits: 768
 --- !u!1 &6021044500509367037
 GameObject:
   m_ObjectHideFlags: 0
@@ -1107,7 +1110,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6021044501199413138}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.2, y: 8.89, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6021044500975999246}

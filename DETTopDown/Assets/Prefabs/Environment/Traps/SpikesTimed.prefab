@@ -147,6 +147,7 @@ MonoBehaviour:
     m_Bits: 1536
   damage: 10
   damageType: 1
+  everyXTrigger: 2
 --- !u!114 &8991722748950334456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,9 +160,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f2c6c19bff8b8f4584193f82fa0e12e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenTriggers: 0.5
+  timeBetweenTriggers: 1
   randomize: 0
   randomizeRange: 0
   triggerGroup: {fileID: 0}
   sameTimeAsTrigger: 1
-  triggerGroupCD: 0.5
+  triggerGroupCD: 1

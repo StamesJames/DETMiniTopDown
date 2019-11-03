@@ -127,6 +127,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   alsoTriggerOnExit: 1
+  onlyTriggerOnce: 0
 --- !u!114 &1330403681508586488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,7 +144,7 @@ MonoBehaviour:
   sprites:
   - {fileID: 6723963429988506304, guid: 3fb515ca2c481a644958284c357dfb2d, type: 3}
   - {fileID: -7010832575621253078, guid: 3fb515ca2c481a644958284c357dfb2d, type: 3}
-  renderer: {fileID: 1330403681508586490}
+  spriteRenderer: {fileID: 1330403681508586490}
 --- !u!114 &1330403681508586486
 MonoBehaviour:
   m_ObjectHideFlags: 0

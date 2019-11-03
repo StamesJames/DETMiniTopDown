@@ -20,6 +20,7 @@ public class ButtonTrigger : Trigger
             if (!ispressed)
             {
                 OnGettingTriggert?.Invoke();
+                ispressed = true;
             }
         }
     }
@@ -32,6 +33,7 @@ public class ButtonTrigger : Trigger
             if (count <= 0)
             {
                 ButtonRelese?.Invoke();
+                ispressed = false;
             }
         }
     }
