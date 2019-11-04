@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 9219884289834115377}
   - component: {fileID: 4035421319290376488}
   - component: {fileID: 4872914790368149039}
+  - component: {fileID: 2535621244597896355}
   m_Layer: 11
   m_Name: MiniRocket
   m_TagString: Untagged
@@ -201,9 +202,9 @@ MonoBehaviour:
     m_Bits: 1280
   explosionWhatToHit:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 9216
   explosionRadius: 0.15
-  explosionDamage: 3
+  explosionDamage: 5
   explosionForce: 30
   pushBackTime: 0.2
   damageType: 0
@@ -223,9 +224,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionWhatToHit:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 9216
   explosionRadius: 0.15
-  explosionDamage: 3
+  explosionDamage: 5
   explosionForce: 30
   explosionTime: 1
   randomizeTime: 1
@@ -248,6 +249,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePool: {fileID: 11400000, guid: 830e50dc96811c14a8c9160f089729f3, type: 2}
+--- !u!114 &2535621244597896355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3169559456499378628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e24221ecdf8b2d4383c34e2c97ebc7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damagetype: 0
+  damage: 10
+  whatToHit:
+    serializedVersion: 2
+    m_Bits: 9216
 --- !u!1 &4169601235009702606
 GameObject:
   m_ObjectHideFlags: 0
