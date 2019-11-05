@@ -2,7 +2,7 @@
 <ArrayOfCountContainerItem xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <CountContainerItem>
     <key>SECONDS_PLAYED</key>
-    <value>5250</value>
+    <value>5460</value>
   </CountContainerItem>
   <CountContainerItem>
     <key>BRAINOMANCER_KILLED</key>
@@ -31,5 +31,9 @@
   <CountContainerItem>
     <key>BRAINOBOSS_KILLED</key>
     <value>5</value>
+  </CountContainerItem>
+  <CountContainerItem>
+    <key>PLAYER_DEATH</key>
+    <value>2</value>
   </CountContainerItem>
 </ArrayOfCountContainerItem>

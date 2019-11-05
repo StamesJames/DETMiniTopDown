@@ -11,15 +11,19 @@ public class GameManager : MonoBehaviour
 
     string saveFilePath;
 
+    bool gameOver = false;
+
     static GameManager _instance;
     public static GameManager Instance { get => _instance; }
+    public bool GameOver { get => gameOver; set => gameOver = value; }
+
 
     private void Awake()
     {
         if (_instance != null)
         {
             Debug.Log("Es wurde ein GameManager zu viel erzeugt");
-            Destroy(this);
+            Destroy(this.gameObject);
             return;
         }
         _instance = this;
@@ -30,10 +34,17 @@ public class GameManager : MonoBehaviour
         playerGameStats = new CountContainer(saveFilePath);
         StartCoroutine("SaveTime");
     }
-    
+
+    private void OnLevelWasLoaded(int level)
+    {
+        gameOver = false;
+    }
+
     void CountPlayerDeath(PlayerInformation information)
     {
+        Debug.Log("player Died");
         playerGameStats.increaseValue("PLAYER_DEATH");
+        gameOver = true;
     }
 
     void CountEnemyDeath(EnemyInformations enemyInformations)
@@ -61,6 +72,6 @@ public class GameManager : MonoBehaviour
     private void OnDisable()
     {
         Enemy.onEnemyDeath -= CountEnemyDeath;
-
+        PlayerHealth.onPlayerDeath -= CountPlayerDeath;
     }
 }

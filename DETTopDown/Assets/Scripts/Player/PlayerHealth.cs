@@ -26,6 +26,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IEffektGiveable
     [SerializeField] float hurtShakeRoughness;
     [SerializeField] float hurtShakeFadeIn;
     [SerializeField] float hurtShakeFadeout;
+    [SerializeField] GameObject gameOverScreeen;
 
     float currentHealth;
 
@@ -48,13 +49,14 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IEffektGiveable
         CameraShaker.Instance.ShakeOnce(hurtShakeAmplitude, hurtShakeRoughness, hurtShakeFadeIn, hurtShakeFadeout);
 
         if(currentHealth <= 0){
-            Destroy(gameObject);
+            PlayerDath();
         }
     }
 
     void PlayerDath()
     {
         onPlayerDeath?.Invoke(new PlayerInformation { PlayerName = "Player_1" });
+        gameOverScreeen.SetActive(true);
         Destroy(gameObject);
     }
 

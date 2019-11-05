@@ -37,8 +37,16 @@ public class PauseMenu : Menu
         pauseMenu.SetActive(isPaused);
     }
 
+    public void UnPause()
+    {
+        isPaused = false;
+        Time.timeScale = 1;
+
+        pauseMenu.SetActive(false);
+    }
+
     void Update(){
-        if(Input.GetButtonDown("Cancel")){
+        if(Input.GetButtonDown("Cancel") && !(GameManager.Instance.GameOver) ){
             Pause();
         }
     }

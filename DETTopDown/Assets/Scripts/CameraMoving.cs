@@ -20,6 +20,9 @@ public class CameraMoving : MonoBehaviour
 
     public void Update()
      {
+        if (!PauseMenu.Instance.IsPaused && !GameManager.Instance.GameOver)
+        {
+
          MousePos1 = Input.mousePosition;
          // the below line assumes this script is attached to a camera object
          ScreenMouse = thisCam.ScreenToWorldPoint(new Vector3(MousePos1.x, MousePos1.y, cameraObject.position.z - thisCam.transform.position.z));
@@ -39,5 +42,6 @@ public class CameraMoving : MonoBehaviour
              cameraObject.position = new Vector3(norm.x * Radius + followTarget.position.x, norm.y * Radius + followTarget.position.y, cameraObject.position.z);
          }
          */
+        }
      }
 }
