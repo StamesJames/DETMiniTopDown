@@ -20,7 +20,11 @@ public class WeaponHolder : MonoBehaviour
         if (Input.GetButtonDown("WeaponDown"))
         {
             weapons[currentIndex].SetActive(false);
-            currentIndex = (currentIndex - 1) % weapons.Length;
+            if(currentIndex - 1 < 0){
+                currentIndex = weapons.Length - 1;
+            }else{
+                currentIndex = (currentIndex - 1);
+            }
             weapons[currentIndex].SetActive(true);
         }
     }

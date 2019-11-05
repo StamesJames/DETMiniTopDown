@@ -5,6 +5,10 @@ using Pathfinding;
 
 public class BigBossKI : MonoBehaviour
 {
+    public delegate void OnBigBossDeath();
+
+    public static OnBigBossDeath onBigBossDeath;
+
     [SerializeField] GameObject player;
     [SerializeField] PrefabPooler[] shots;
     [SerializeField] Transform[] circleSpawns;
@@ -156,22 +160,37 @@ public class BigBossKI : MonoBehaviour
         int randomNumber = Random.Range(0, 4);
         if (randomNumber == 0)
         {
+            if(currentStateUpdate == ShootInAllDirectionsUpdate){
+                return rotatingShotStreamUpdate;
+            }         
             return ShootInAllDirectionsUpdate;
         }
         else if (randomNumber == 1)
         {
+            if(currentStateUpdate == rotatingShotStreamUpdate){
+                return rotatingShotFourDirectonsUpdate;
+            }   
             return rotatingShotStreamUpdate;
         }
         else if (randomNumber == 2)
         {
+            if(currentStateUpdate == rotatingShotFourDirectonsUpdate){
+                return alternatingFourDirektionsUpdate;
+            }   
             return rotatingShotFourDirectonsUpdate;
         }
         else if (randomNumber == 3)
         {
+            if(currentStateUpdate == alternatingFourDirektionsUpdate){
+                return alternatingFourDirektionsUpdate;
+            }   
             return alternatingFourDirektionsUpdate;
         }
         else
         {
+            if(currentStateUpdate == alternatingFourDirektionsUpdate){
+                return ShootInAllDirectionsUpdate;
+            }   
             return alternatingFourDirektionsUpdate;
         }
     }
@@ -194,5 +213,10 @@ public class BigBossKI : MonoBehaviour
     {
         RIGHT = 0, RIGHTUP = 1, UP = 2, LEFTUP = 3, LEFT = 4, LEFTDOWN = 5, DOWN = 6, RIGHTDOWN = 7
     }
+
+    void OnDestroy(){
+        onBigBossDeath?.Invoke();
+    }
+    
 }
 

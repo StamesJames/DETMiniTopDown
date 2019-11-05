@@ -20,4 +20,8 @@ public class StraightLinear : FlightType
         rb.velocity = transform.right * (Speed + (randomize ? Random.Range(-randomRange, randomRange) : 0 ));
     }
 
+    public void fireMe(float shotSpeed){
+        rb.velocity = transform.right * (shotSpeed);
+    }
+
 }
