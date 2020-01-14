@@ -15,6 +15,8 @@ public class ChasingPlayer : TriggerEffect
     ChasingPlayerAction stateUpdate;
     ChasingPlayerAction stateTrigger;
 
+
+
     Transform origin;
 
 
@@ -26,8 +28,8 @@ public class ChasingPlayer : TriggerEffect
 
     private void Awake()
     {
-        GameObject emptyGameObject = new GameObject();
-        origin = Instantiate(emptyGameObject, transform.position, transform.rotation).transform;
+        origin = new GameObject().transform;
+        origin.position = transform.position;
         destSetter.target = origin;
         stateUpdate = WaitingUpdate;
         stateTrigger = WaitingTrigger;
@@ -54,18 +56,15 @@ public class ChasingPlayer : TriggerEffect
     {
             Vector3 connectionVec = aiController.CurrentTarget.transform.position - transform.position;
             RaycastHit2D lineHit = Physics2D.CircleCast(transform.position, 0.3f, connectionVec.normalized, connectionVec.magnitude, whatIsObstacle);
-            Debug.Log("Found " + lineHit.collider.gameObject.name + " in the way");
-            if (lineHit && lineHit.collider.gameObject == aiController.CurrentTarget.gameObject)
+            if (lineHit && lineHit.collider.gameObject.Equals( aiController.CurrentTarget.gameObject) )
             {
                 path.endReachedDistance = stopDistance;
-                path.slowdownDistance = stopDistance + 3;
+                path.slowdownDistance = stopDistance + 1;
             }
             else
             {
                 path.endReachedDistance = 0.3f;
-                path.slowdownDistance = 0.3f + 3;
-
-                path.SearchPath();
+                path.slowdownDistance = 0.3f + 1;
             }
     }
 
@@ -98,7 +97,6 @@ public class ChasingPlayer : TriggerEffect
 
     protected override void Trigger()
     {
-        Debug.Log("Got Triggert");
         stateTrigger?.Invoke();
     }
 }

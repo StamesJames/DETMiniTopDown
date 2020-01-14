@@ -7,7 +7,7 @@ public class CastingRay : TriggerEffect
 
     [SerializeField] LayerMask whatToHit;
     [SerializeField] RayCastEffect[] rayCastEffects;
-    [SerializeField] Transform startTransform;
+    [SerializeField] Transform[] startTransforms;
     [SerializeField] float distance;
     [SerializeField] bool piercing;
     [Header("Visualisation Stuff")]
@@ -21,48 +21,53 @@ public class CastingRay : TriggerEffect
     {
         if (piercing)
         {
-            RaycastHit2D[] hits = Physics2D.RaycastAll(startTransform.position, startTransform.right, distance, whatToHit);
-            foreach (RaycastHit2D hit in hits)
+            foreach (Transform startTransform in startTransforms)
             {
-                foreach (RayCastEffect effect in rayCastEffects)
+                RaycastHit2D[] hits = Physics2D.RaycastAll(startTransform.position, startTransform.right, distance, whatToHit);
+                foreach (RaycastHit2D hit in hits)
                 {
-                    effect.TriggerEffect(hit);
+                    foreach (RayCastEffect effect in rayCastEffects)
+                    {
+                        effect.TriggerEffect(hit);
+                    }
                 }
-            }
-            if (showLine)
-            {
-                lineRenderer.SetPosition(0, startTransform.position);
-                lineRenderer.SetPosition(1, startTransform.position + startTransform.right * distance);
-                lineRenderer.enabled = true;
-                effectTimer = lineRenderTime;
+                if (showLine)
+                {
+                    lineRenderer.SetPosition(0, startTransform.position);
+                    lineRenderer.SetPosition(1, startTransform.position + startTransform.right * distance);
+                    lineRenderer.enabled = true;
+                    effectTimer = lineRenderTime;
+                }
             }
         }
         else
         {
-            RaycastHit2D hit = Physics2D.Raycast(startTransform.position, startTransform.right, distance, whatToHit);
-            if (hit)
+            foreach (Transform startTransform in startTransforms)
             {
-                foreach (RayCastEffect effect in rayCastEffects)
-                {
-                    effect.TriggerEffect(hit);
-                }
-            }
-            if (showLine)
-            {
-                lineRenderer.SetPosition(0, startTransform.position);
+                RaycastHit2D hit = Physics2D.Raycast(startTransform.position, startTransform.right, distance, whatToHit);
                 if (hit)
                 {
-                    lineRenderer.SetPosition(1, hit.point);
+                    foreach (RayCastEffect effect in rayCastEffects)
+                    {
+                        effect.TriggerEffect(hit);
+                    }
                 }
-                else
+                if (showLine)
                 {
-                    lineRenderer.SetPosition(1, startTransform.position + startTransform.right * distance);
+                    lineRenderer.SetPosition(0, startTransform.position);
+                    if (hit)
+                    {
+                        lineRenderer.SetPosition(1, hit.point);
+                    }
+                    else
+                    {
+                        lineRenderer.SetPosition(1, startTransform.position + startTransform.right * distance);
+                    }
+                    lineRenderer.enabled = true;
+                    effectTimer = lineRenderTime;
                 }
-                lineRenderer.enabled = true;
-                effectTimer = lineRenderTime;
             }
         }
-
 
     }
 

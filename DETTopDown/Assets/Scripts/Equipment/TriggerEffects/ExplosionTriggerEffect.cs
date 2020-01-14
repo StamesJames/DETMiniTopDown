@@ -11,6 +11,14 @@ public class ExplosionTriggerEffect : TriggerEffect
     [SerializeField] float pushBackTime = 1f;
     [SerializeField] DAMAGETYPE damageType;
     [SerializeField] PrefabPooler explosionEffect;
+    [SerializeField] bool destoryThis = true;
+
+    IDamageable myDamageable;
+
+    private void Awake()
+    {
+        myDamageable = GetComponent<IDamageable>();
+    }
 
     protected override void Trigger()
     {
@@ -21,14 +29,17 @@ public class ExplosionTriggerEffect : TriggerEffect
         foreach (Collider2D hit in hits)
         {
             IDamageable target = hit.GetComponent<IDamageable>();
-            if (target != null && !hit.Equals(myCollider))
+            if (target != null && target != myDamageable)
             {
                 target.GetPushed((hit.transform.position - this.transform.position).normalized, explosionForce, pushBackTime);
                 target.GetDamaged(explosionDamage, damageType);                   
             }               
-        } 
+        }
 
-        Destroy(this.gameObject);
+        if (destoryThis)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnDrawGizmosSelected()

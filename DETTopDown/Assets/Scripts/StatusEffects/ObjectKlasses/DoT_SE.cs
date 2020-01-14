@@ -9,9 +9,12 @@ public class DoT_SE : StatusEffect
     [SerializeField] int tickCount;
     [SerializeField] float timeBetweenTicks;
     [SerializeField] DAMAGETYPE damageType;
+    [SerializeField] GameObject effectVisuals;
 
     float nextTick;
     int currentTickCount = 0;
+    GameObject currentVisualEffect;
+
 
     public DoT_SE(DoT_SE copieThis ,GameObject target)
     {
@@ -20,6 +23,8 @@ public class DoT_SE : StatusEffect
         timeBetweenTicks = copieThis.timeBetweenTicks;
         nextTick = timeBetweenTicks;
         damageType = copieThis.damageType;
+        effectVisuals = copieThis.effectVisuals;
+        blockedBy = copieThis.blockedBy;
 
         this.target = target;
         targetStatusEffectable = target.GetComponent<IStatusEffectable>();
@@ -32,6 +37,7 @@ public class DoT_SE : StatusEffect
             targetStatusEffectable.AddOnTick(DotTick);
             targetStatusEffectable.AddStatusEffect(this);
         }
+        currentVisualEffect = GameObject.Instantiate(effectVisuals, target.transform);
     }
 
     void DotTick()
@@ -51,19 +57,21 @@ public class DoT_SE : StatusEffect
         }
         if (currentTickCount >= tickCount)
         {
-            RemoveDot();
+            RemoveEffect();
         }
     }
 
-    void RemoveDot()
+    public override void RemoveEffect()
     {
         Debug.Log("dot got removed");
         targetStatusEffectable.RemoveOnTick(DotTick);
         targetStatusEffectable.RemoveStatusEffect(this);
+        GameObject.Destroy(currentVisualEffect);
     }
 
     ~DoT_SE()
     {
+        Debug.Log("Dot Effect got destructed");
         targetStatusEffectable.RemoveOnTick(DotTick);
     }
 

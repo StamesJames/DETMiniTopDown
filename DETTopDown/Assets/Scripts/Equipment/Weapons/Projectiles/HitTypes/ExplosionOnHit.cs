@@ -13,6 +13,14 @@ public class ExplosionOnHit : MonoBehaviour
     [SerializeField] float pushBackTime = 1f;
     [SerializeField] DAMAGETYPE damageType;
     [SerializeField] PrefabPooler explosionEffect;
+    [SerializeField] bool destroy = true;
+
+    SelfPooler selfPooler;
+
+    private void Awake()
+    {
+        selfPooler = GetComponent<SelfPooler>();
+    }
 
     private void OnDrawGizmosSelected()
     {
@@ -34,6 +42,10 @@ public class ExplosionOnHit : MonoBehaviour
                     target.GetPushed((hit.transform.position - this.transform.position).normalized, explosionForce, pushBackTime);
                     target.GetDamaged(explosionDamage, damageType);                   
                 }               
+            }
+            if (destroy)
+            {
+                selfPooler.PoolMe();
             }
         }
     }

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be3984a9ce832444a94ee867e04973f4, type: 3}
   m_Name: GatlinGunDamage
   m_EditorClassIdentifier: 
-  damage: 2
+  damage: 10
   damageType: 0
   whatToDamage:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 9216

@@ -12,6 +12,12 @@ public class AIController : MonoBehaviour
     GameObject currentTarget;
     public GameObject CurrentTarget { get => currentTarget; }
 
+
+    private void Awake()
+    {
+        startPosition = transform.position;
+    }
+
     public void Trigger(int index)
     {
         triggers[index]?.TriggerMe();

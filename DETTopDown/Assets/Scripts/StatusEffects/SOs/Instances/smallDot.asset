@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: smallDot
   m_EditorClassIdentifier: 
   dotStatusEffect:
-    name: fire
+    name: BURN
+    blockedBy:
+    - BURN
     damagePerTick: 10
     tickCount: 10
     timeBetweenTicks: 1
     damageType: 4
+    effectVisuals: {fileID: 392061694528344372, guid: 9b6ecd255fd917242bef26bf787a76e6,
+      type: 3}

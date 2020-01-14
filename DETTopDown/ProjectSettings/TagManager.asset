@@ -20,8 +20,8 @@ TagManager:
   - Projectile
   - RoomDetecter
   - DamageEnvironment
-  - 
-  - 
+  - ExplodingProjectile
+  - InvWalls
   - 
   - 
   - 
