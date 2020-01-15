@@ -18,10 +18,10 @@ TagManager:
   - Player
   - Enemy
   - Projectile
-  - 
-  - 
-  - 
-  - 
+  - RoomDetecter
+  - DamageEnvironment
+  - ExplodingProjectile
+  - InvWalls
   - 
   - 
   - 

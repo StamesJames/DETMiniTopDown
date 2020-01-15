@@ -6,13 +6,25 @@ using Pathfinding;
 
 public class Enemy : MonoBehaviour, IDamageable, IEffektGiveable, IStatusEffectable
 {
+    [SerializeField] string enemyName;
+    [SerializeField] int points;
     [SerializeField] PrefabPooler particlePool;
     [SerializeField] float startHealth;
     [Header("UI Stuff")]
     [SerializeField] Image healthBar;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip hurtSound;
+    [SerializeField] Transform graphics;
     float lifetotal;
 
     Rigidbody2D rb;
+
+    AIDestinationSetter setter;
+
+    public delegate void OnEnemyDeath(EnemyInformations informations);
+    public static event OnEnemyDeath onEnemyDeath;
+
+    public event OnEnemyDeath onMyDeath;
 
     // Status Effect Kram
     List<StatusEffect> statusEffects = new List<StatusEffect>();
@@ -23,6 +35,7 @@ public class Enemy : MonoBehaviour, IDamageable, IEffektGiveable, IStatusEffecta
     AIPath path;
 
     void Awake(){
+        setter = GetComponent<AIDestinationSetter>();
         rb = GetComponent<Rigidbody2D>();
         seeker = GetComponent<Seeker>();
         path = GetComponent<AIPath>();
@@ -36,6 +49,17 @@ public class Enemy : MonoBehaviour, IDamageable, IEffektGiveable, IStatusEffecta
 
     private void Update()
     {
+        if (setter.target != null)
+        {
+            if (setter.target.position.x < transform.position.x)
+            {
+                graphics.localScale = new Vector3(1, 1, 1);
+            }
+            else
+            {
+                graphics.localScale = new Vector3(-1, 1, 1);
+            }
+        }
         onTickEvent?.Invoke();
     }
 
@@ -43,6 +67,8 @@ public class Enemy : MonoBehaviour, IDamageable, IEffektGiveable, IStatusEffecta
     {
         Debug.Log("hab dmg bekommen : "+ dmg + type);
         lifetotal -= dmg;
+
+        audioSource.PlayOneShot(hurtSound);
 
         healthBar.fillAmount = lifetotal/startHealth;
 
@@ -57,6 +83,8 @@ public class Enemy : MonoBehaviour, IDamageable, IEffektGiveable, IStatusEffecta
     }
 
     public void DestroyMe(){
+        onMyDeath?.Invoke(new EnemyInformations { Name = enemyName, Points = points });
+        onEnemyDeath?.Invoke(new EnemyInformations { Name = enemyName, Points = points });
         Destroy(gameObject);
     }
 
@@ -88,7 +116,19 @@ public class Enemy : MonoBehaviour, IDamageable, IEffektGiveable, IStatusEffecta
 
     public void AddStatusEffect(StatusEffect effect)
     {
-        statusEffects.Add(effect);
+        bool temp = true;
+
+        foreach (StatusEffect currentEffect in statusEffects)
+        {
+            if (!effect.InteractWithOtherEffect(currentEffect.Name))
+            {
+                temp = false;
+            }
+        }
+        if (temp)
+        {
+            statusEffects.Add(effect);
+        }
     }
 
     public void RemoveStatusEffect(StatusEffect effect)
@@ -105,4 +145,13 @@ public class Enemy : MonoBehaviour, IDamageable, IEffektGiveable, IStatusEffecta
     {
         onTickEvent -= onTick;
     }
+}
+
+public class EnemyInformations
+{
+    string name;
+    int points;
+
+    public string Name { get => name; set => name = value; }
+    public int Points { get => points; set => points = value; }
 }

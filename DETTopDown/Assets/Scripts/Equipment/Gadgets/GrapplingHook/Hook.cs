@@ -6,9 +6,10 @@ public class Hook : MonoBehaviour
 {
 
     [SerializeField] GraplingHook hookParent;
+    [SerializeField] LayerMask whatToHit;
+    Rigidbody2D rb;
 
     float speed = 30f;
-    Rigidbody2D rb;
 
     public float Speed { get => speed; set => speed = value; }
 
@@ -24,13 +25,24 @@ public class Hook : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Collided with: " + collision.gameObject.name);
-
-        if (!collision.CompareTag("Player"))
+        if ( ( (1 << collision.gameObject.layer) & whatToHit ) > 0 )
         {
             transform.SetParent(collision.transform);
             rb.velocity = Vector2.zero;
             hookParent.HookHit();
         }
     }
+
+    private void FixedUpdate()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, rb.velocity.normalized, rb.velocity.magnitude / 10, whatToHit);
+        if (hit)
+        {
+            transform.position = hit.point;
+            transform.SetParent(hit.transform);
+            rb.velocity = Vector2.zero;
+            hookParent.HookHit();
+        }
+    }
+
 }

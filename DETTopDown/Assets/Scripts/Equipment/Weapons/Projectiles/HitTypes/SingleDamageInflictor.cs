@@ -8,6 +8,8 @@ public class SingleDamageInflictor : MonoBehaviour
     [SerializeField] float damage;
     [SerializeField] LayerMask whatToHit;
 
+    public float Damage { get => damage; set => damage = value; }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (((1 << collision.gameObject.layer) & whatToHit) > 0)
@@ -15,7 +17,19 @@ public class SingleDamageInflictor : MonoBehaviour
             IDamageable target = collision.GetComponent<IDamageable>();
             if (target != null)
             {
-                target.GetDamaged(20, damagetype);
+                target.GetDamaged(damage, damagetype);
+            }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (((1 << collision.gameObject.layer) & whatToHit) > 0)
+        {
+            IDamageable target = collision.collider.GetComponent<IDamageable>();
+            if (target != null)
+            {
+                target.GetDamaged(damage, damagetype);
             }
         }
     }

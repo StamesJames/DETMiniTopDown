@@ -17,6 +17,14 @@ public class DestroyOnHit : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if ((int)((1 << collision.gameObject.layer) & whatToHit) > 0)
+        {
+            disable = true;
+        }
+    }
+
     private void LateUpdate()
     {
         if (disable)

@@ -7,6 +7,8 @@ public class StraightLinear : FlightType
 {
 
     Rigidbody2D rb;
+    [SerializeField] bool randomize = false;
+    [SerializeField] float randomRange = 2f;
 
     void Awake()
     {
@@ -15,7 +17,11 @@ public class StraightLinear : FlightType
 
     private void OnEnable()
     {
-        rb.velocity = transform.right * Speed;
+        rb.velocity = transform.right * (Speed + (randomize ? Random.Range(-randomRange, randomRange) : 0 ));
+    }
+
+    public void fireMe(float shotSpeed){
+        rb.velocity = transform.right * (shotSpeed);
     }
 
 }

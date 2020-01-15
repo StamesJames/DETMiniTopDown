@@ -60,12 +60,6 @@ public class SingleShot : Weapon
         }
     }
 
-    private void FixedUpdate()
-    {
-        //Diese Fumktion zielt die angegebene transform (Also hier einfach die Eigene) zur mousposition 
-        AimWeapon.Instance.Aim(transform);
-    }
-
     public override void Trigger()
     {
         if (shotSpawn && projectilePool && !PauseMenu.Instance.IsPaused)
